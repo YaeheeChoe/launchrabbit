@@ -22,7 +22,7 @@ class RestorantWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color statusColor = Colors.white;
+    Color statusColor = Color(0xffFF7622);
     Color mainColor = Color(0xffFF7622);
     TextStyle statusStyle = TextStyle(
       fontSize: 28,
@@ -43,8 +43,14 @@ class RestorantWidget extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(24, 28, 24, 0),
       width: 160,
       height: 210,
-      decoration: BoxDecoration(
-          color: Colors.pink, borderRadius: BorderRadius.circular(16)),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          offset: Offset(0, 2),
+          blurRadius: 4,
+          spreadRadius: 0,
+        ),
+      ], color: Colors.white, borderRadius: BorderRadius.circular(16)),
       child: Center(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
