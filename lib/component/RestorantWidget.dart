@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../colors.dart';
 
 class RestorantWidget extends StatelessWidget {
   final String name;
@@ -22,8 +23,8 @@ class RestorantWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color statusColor = Color(0xffFF7622);
-    Color mainColor = Color(0xffFF7622);
+    Color statusColor = primaryColor;
+    Color mainColor = primaryColor;
     TextStyle statusStyle = TextStyle(
       fontSize: 28,
       color: statusColor,
@@ -33,7 +34,7 @@ class RestorantWidget extends StatelessWidget {
     );
     TextStyle menuStyle = TextStyle(
       fontSize: 12,
-      color: Color(0xffA0A5BA),
+      color: textGray,
     );
     TextStyle kmStyle = TextStyle(
       fontSize: 12,
@@ -44,13 +45,8 @@ class RestorantWidget extends StatelessWidget {
       width: 160,
       height: 210,
       decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          offset: Offset(0, 2),
-          blurRadius: 4,
-          spreadRadius: 0,
-        ),
-      ], color: Colors.white, borderRadius: BorderRadius.circular(16)),
+        defaultShadow,
+      ], color: mainWhite, borderRadius: BorderRadius.circular(16)),
       child: Center(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
