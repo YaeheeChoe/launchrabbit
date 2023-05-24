@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:launchrabbit/colors.dart';
 import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
+import './component/RestorantWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +35,28 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
+
+    List<RestorantWidget> restorantWidgetList = [
+      RestorantWidget(
+        name: '먹짜',
+        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+        area: '',
+        km: 0.8,
+        maxSeats: 16,
+        seats: 15,
+        isStar: true,
+      ),
+      RestorantWidget(
+        name: '먹짜',
+        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+        area: '',
+        km: 0.8,
+        maxSeats: 16,
+        seats: 15,
+        isStar: true,
+      ),
+      // ...
+    ];
     void _showAction(BuildContext context, int index) {
       showDialog<void>(
         context: context,
@@ -68,10 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('안녕! 좋은 점심이야~'),
-          Text('상권선택'),
-          Text('목록'),
+          Text('안녕! 좋은 점심이야!'),
+          Text('안녕! 좋은 점심이야~'),
           Expanded(
-            child: WidgetList(),
+            child: WidgetList(widgetList: restorantWidgetList),
           ),
         ],
       ),
