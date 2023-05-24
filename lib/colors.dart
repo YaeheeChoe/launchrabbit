@@ -6,6 +6,8 @@ const bgColor = Color(0xffF6F6F6);
 const textGray = Color(0xff676767);
 const mainBlack = Color(0xff181C2E);
 const mainWhite = Color(0xffFFFFFF);
+const warningColor = Color(0xffCE1313);
+const safeColor = Color(0xff1B8250);
 
 var defaultShadow = BoxShadow(
   color: Colors.grey.withOpacity(0.5),
