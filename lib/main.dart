@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: null,
       body: Center(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RestorantWidget(
@@ -80,11 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          FloatingActionButton(
-            onPressed: () {
-              // 첫 번째 FloatingActionButton을 누를 때 동작
-            },
-            child: Icon(Icons.arrow_back),
+          Container(
+            padding: EdgeInsets.only(left: 32),
+            child: FloatingActionButton(
+              onPressed: () {
+                // 첫 번째 FloatingActionButton을 누를 때 동작
+              },
+              child: Icon(Icons.arrow_back),
+            ),
           ),
           ExpandableFab(
             distance: 80.0,
