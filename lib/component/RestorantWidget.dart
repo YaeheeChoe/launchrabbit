@@ -1,20 +1,103 @@
 import 'package:flutter/material.dart';
 
 class RestorantWidget extends StatelessWidget {
+  final String name;
+  final String menu;
+  final bool isStar;
+  final int maxSeats;
+  final int seats;
+  final double km;
+  final String area;
+
+  const RestorantWidget(
+      {Key? key,
+      required this.area,
+      required this.name,
+      required this.menu,
+      required this.km,
+      required this.isStar,
+      required this.maxSeats,
+      required this.seats})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    Color statusColor = Colors.white;
+    Color mainColor = Color(0xffFF7622);
+    TextStyle statusStyle = TextStyle(
+      fontSize: 28,
+      color: statusColor,
+    );
+    TextStyle nameStyle = TextStyle(
+      fontSize: 16,
+    );
+    TextStyle menuStyle = TextStyle(
+      fontSize: 12,
+      color: Color(0xffA0A5BA),
+    );
+    TextStyle kmStyle = TextStyle(
+      fontSize: 12,
+    );
     return Container(
-      width: 200,
-      height: 200,
-      color: Colors.blue,
+      margin: EdgeInsets.all(8),
+      padding: EdgeInsets.fromLTRB(24, 28, 24, 0),
+      width: 160,
+      height: 210,
+      decoration: BoxDecoration(
+          color: Colors.pink, borderRadius: BorderRadius.circular(16)),
       child: Center(
-        child: Text(
-          '안녕하세요',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Container(
+            child: Row(
+              children: [
+                Icon(
+                  Icons.person_outlined,
+                  color: statusColor,
+                ),
+                Text(seats.toString(), style: statusStyle),
+                Text(
+                  '/',
+                  style: statusStyle,
+                ),
+                Text(maxSeats.toString(), style: statusStyle),
+              ],
+            ),
           ),
-        ),
+          Padding(padding: EdgeInsets.only(top: 8)),
+          Text(
+            name,
+            style: nameStyle,
+          ),
+          Padding(padding: EdgeInsets.only(top: 8)),
+          Text(
+            menu,
+            style: menuStyle,
+          ),
+          Padding(padding: EdgeInsets.only(top: 8)),
+          Text(
+            km.toString() + 'km',
+            style: kmStyle,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.star_border),
+                color: mainColor,
+              ),
+              Text(
+                '|',
+                style: menuStyle,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.location_on),
+                color: mainColor,
+              )
+            ],
+          ),
+        ]),
       ),
     );
   }

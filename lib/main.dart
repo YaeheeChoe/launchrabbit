@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:launchrabbit/component/ExpandableFab.dart';
+import 'package:launchrabbit/component/RestorantWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: '안녕! 좋은 점심이야'),
     );
   }
 }
@@ -29,14 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
@@ -65,30 +58,52 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            RestorantWidget(
+              name: '먹짜',
+              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+              area: '',
+              km: 0.8,
+              maxSeats: 16,
+              seats: 15,
+              isStar: true,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            RestorantWidget(
+              name: '먹짜',
+              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+              area: '',
+              km: 0.8,
+              maxSeats: 16,
+              seats: 15,
+              isStar: true,
             ),
           ],
         ),
       ),
-      floatingActionButton: ExpandableFab(
-        distance: 80.0,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ActionButton(
-            onPressed: () => _showAction(context, 0),
-            icon: const Icon(Icons.format_size),
+          FloatingActionButton(
+            onPressed: () {
+              // 첫 번째 FloatingActionButton을 누를 때 동작
+            },
+            child: Icon(Icons.arrow_back),
           ),
-          ActionButton(
-            onPressed: () => _showAction(context, 1),
-            icon: const Icon(Icons.insert_photo),
-          ),
-          ActionButton(
-            onPressed: () => _showAction(context, 2),
-            icon: const Icon(Icons.videocam),
+          ExpandableFab(
+            distance: 80.0,
+            children: [
+              ActionButton(
+                onPressed: () => _showAction(context, 0),
+                icon: const Icon(Icons.backspace),
+              ),
+              ActionButton(
+                onPressed: () => _showAction(context, 1),
+                icon: const Icon(Icons.person),
+              ),
+              ActionButton(
+                onPressed: () => _showAction(context, 2),
+                icon: const Icon(Icons.star),
+              ),
+            ],
           ),
         ],
       ),
