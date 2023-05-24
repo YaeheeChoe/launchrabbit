@@ -65,12 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true, // 텍스트를 가운데 정렬
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Search',
-            ),
-          ),
+          Text('안녕! 좋은 점심이야~'),
+          Text('상권선택'),
+          Text('목록'),
           Expanded(
             child: WidgetList(),
           ),
