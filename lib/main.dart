@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:launchrabbit/colors.dart';
 import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/RestorantWidget.dart';
 
@@ -53,26 +54,35 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: null,
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RestorantWidget(
-              name: '먹짜',
-              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-              area: '',
-              km: 0.8,
-              maxSeats: 16,
-              seats: 15,
-              isStar: true,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 68),
+              child: Text('식당 찾기'),
             ),
-            RestorantWidget(
-              name: '먹짜',
-              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-              area: '',
-              km: 0.8,
-              maxSeats: 16,
-              seats: 15,
-              isStar: true,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RestorantWidget(
+                  name: '먹짜',
+                  menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+                  area: '',
+                  km: 0.8,
+                  maxSeats: 16,
+                  seats: 15,
+                  isStar: true,
+                ),
+                RestorantWidget(
+                  name: '먹짜',
+                  menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+                  area: '',
+                  km: 0.8,
+                  maxSeats: 16,
+                  seats: 15,
+                  isStar: true,
+                ),
+              ],
             ),
           ],
         ),
@@ -83,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              backgroundColor: seconderyColor,
               onPressed: () {
                 // 첫 번째 FloatingActionButton을 누를 때 동작
               },
