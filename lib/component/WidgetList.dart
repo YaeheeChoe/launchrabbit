@@ -24,7 +24,3 @@ class WidgetList extends StatelessWidget {
     );
   }
 }
-
-/*
-
-          */

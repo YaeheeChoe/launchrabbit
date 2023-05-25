@@ -26,7 +26,7 @@ class RestorantWidget extends StatelessWidget {
     Color statusColor = primaryColor;
     Color mainColor = primaryColor;
     TextStyle statusStyle = TextStyle(
-      fontSize: 28,
+      fontSize: 20,
       color: statusColor,
     );
     TextStyle nameStyle = TextStyle(
@@ -40,7 +40,7 @@ class RestorantWidget extends StatelessWidget {
       fontSize: 12,
     );
     return Container(
-      padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
+      padding: EdgeInsets.fromLTRB(16, 20, 16, 0),
       decoration: BoxDecoration(boxShadow: [
         defaultShadow,
       ], color: mainWhite, borderRadius: BorderRadius.circular(16)),
@@ -67,12 +67,12 @@ class RestorantWidget extends StatelessWidget {
             name,
             style: nameStyle,
           ),
-          Padding(padding: EdgeInsets.only(top: 8)),
+          Padding(padding: EdgeInsets.only(top: 6)),
           Text(
             menu,
             style: menuStyle,
           ),
-          Padding(padding: EdgeInsets.only(top: 8)),
+          Padding(padding: EdgeInsets.only(top: 6)),
           Text(
             km.toString() + 'km',
             style: kmStyle,
@@ -82,7 +82,7 @@ class RestorantWidget extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.star_border),
+                icon: Icon(Icons.star_border, size: 16),
                 color: mainColor,
               ),
               Text(
@@ -91,7 +91,10 @@ class RestorantWidget extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.location_on),
+                icon: Icon(
+                  Icons.location_on,
+                  size: 16,
+                ),
                 color: mainColor,
               )
             ],
