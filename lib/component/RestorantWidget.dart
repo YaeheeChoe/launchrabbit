@@ -40,8 +40,7 @@ class RestorantWidget extends StatelessWidget {
       fontSize: 12,
     );
     return Container(
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.fromLTRB(24, 28, 24, 0),
+      padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
       decoration: BoxDecoration(boxShadow: [
         defaultShadow,
       ], color: mainWhite, borderRadius: BorderRadius.circular(16)),

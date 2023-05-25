@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:launchrabbit/colors.dart';
+import 'package:launchrabbit/component/AreaButton.dart';
 import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
 import './component/RestorantWidget.dart';
@@ -31,12 +32,45 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+enum Area {
+  Sinjeongmun,
+  Gujeongmun,
+  Sadaebugo,
+}
+
 class _MyHomePageState extends State<MyHomePage> {
+  TextStyle menuTextStyle = TextStyle(
+    fontSize: 20,
+    color: mainBlack,
+  );
+  TextStyle secondaryTextStyle = TextStyle(
+    fontSize: 16,
+    color: mainBlack,
+  );
   @override
   Widget build(BuildContext context) {
     const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
+    Area _selectedArea = Area.Sinjeongmun;
 
     List<RestorantWidget> restorantWidgetList = [
+      RestorantWidget(
+        name: '먹짜',
+        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+        area: '',
+        km: 0.8,
+        maxSeats: 16,
+        seats: 15,
+        isStar: true,
+      ),
+      RestorantWidget(
+        name: '먹짜',
+        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+        area: '',
+        km: 0.8,
+        maxSeats: 16,
+        seats: 15,
+        isStar: true,
+      ),
       RestorantWidget(
         name: '먹짜',
         menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
@@ -100,21 +134,58 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.only(top: 16),
           child: Text(
             '식당찾기',
-            style: TextStyle(color: Colors.black),
+            style: secondaryTextStyle,
           ),
         ),
         centerTitle: true, // 텍스트를 가운데 정렬
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('안녕! 좋은 점심이야~'),
-          Text('안녕! 좋은 점심이야!'),
-          Text('안녕! 좋은 점심이야~'),
-          Expanded(
-            child: WidgetList(widgetList: restorantWidgetList),
-          ),
-        ],
+      body: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 16),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                '안녕! 좋은 점심이야~',
+                style: secondaryTextStyle,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                '상권선택',
+                style: menuTextStyle,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (BuildContext context, int index) => AreaButton(),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                '목록',
+                style: menuTextStyle,
+              ),
+            ),
+            Expanded(
+              flex: 8,
+              child: Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  child: SingleChildScrollView(
+                    child: WidgetList(widgetList: restorantWidgetList),
+                  )),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

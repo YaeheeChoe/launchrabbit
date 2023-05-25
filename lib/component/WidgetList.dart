@@ -10,6 +10,7 @@ class WidgetList extends StatelessWidget {
     return GridView.builder(
       itemCount: widgetList.length,
       shrinkWrap: true,
+      scrollDirection: Axis.vertical,
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
