@@ -134,11 +134,11 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               ActionButton(
                 onPressed: () => _showAction(context, 0),
-                icon: const Icon(Icons.backspace),
+                icon: const Icon(Icons.exit_to_app),
               ),
               ActionButton(
                 onPressed: () => _showAction(context, 1),
-                icon: const Icon(Icons.person),
+                icon: const Icon(Icons.person_outline),
               ),
               ActionButton(
                 onPressed: () => _showAction(context, 2),

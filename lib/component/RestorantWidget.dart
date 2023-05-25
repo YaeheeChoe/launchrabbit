@@ -42,8 +42,6 @@ class RestorantWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(8),
       padding: EdgeInsets.fromLTRB(24, 28, 24, 0),
-      width: 160,
-      height: 210,
       decoration: BoxDecoration(boxShadow: [
         defaultShadow,
       ], color: mainWhite, borderRadius: BorderRadius.circular(16)),
@@ -53,7 +51,7 @@ class RestorantWidget extends StatelessWidget {
             child: Row(
               children: [
                 Icon(
-                  Icons.person_outlined,
+                  Icons.person,
                   color: statusColor,
                 ),
                 Text(seats.toString(), style: statusStyle),
