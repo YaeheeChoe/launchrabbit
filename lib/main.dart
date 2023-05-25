@@ -55,6 +55,24 @@ class _MyHomePageState extends State<MyHomePage> {
         seats: 15,
         isStar: true,
       ),
+      RestorantWidget(
+        name: '먹짜',
+        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+        area: '',
+        km: 0.8,
+        maxSeats: 16,
+        seats: 15,
+        isStar: true,
+      ),
+      RestorantWidget(
+        name: '먹짜',
+        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+        area: '',
+        km: 0.8,
+        maxSeats: 16,
+        seats: 15,
+        isStar: true,
+      ),
       // ...
     ];
     void _showAction(BuildContext context, int index) {

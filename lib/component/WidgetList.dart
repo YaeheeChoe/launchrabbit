@@ -7,8 +7,16 @@ class WidgetList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return GridView.builder(
       itemCount: widgetList.length,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10.0,
+        crossAxisSpacing: 5.0,
+        childAspectRatio: 1.0,
+      ),
       itemBuilder: (context, index) {
         return widgetList[index];
       },
