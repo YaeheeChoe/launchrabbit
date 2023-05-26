@@ -37,9 +37,8 @@ class RestorantWidget extends StatelessWidget {
       fontSize: 12,
       color: textGray,
     );
-    TextStyle kmStyle = TextStyle(
-      fontSize: 12,
-    );
+    TextStyle kmStyle =
+        TextStyle(fontSize: 12, color: mainBlack, fontWeight: FontWeight.w600);
     return GestureDetector(
         onTap: () {},
         child: Container(

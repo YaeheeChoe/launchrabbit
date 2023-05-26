@@ -15,7 +15,7 @@ class WidgetList extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10.0,
-        crossAxisSpacing: 5.0,
+        crossAxisSpacing: 10.0,
         childAspectRatio: 1.0,
       ),
       itemBuilder: (context, index) {
