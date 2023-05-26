@@ -26,6 +26,15 @@ class RestorantWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Color statusColor = primaryColor;
     Color mainColor = primaryColor;
+
+    if (maxSeats - seats > 8) {
+      statusColor = safeColor;
+    } else if (maxSeats - seats > 4) {
+      statusColor = primaryColor;
+    } else {
+      statusColor = warningColor;
+    }
+
     TextStyle statusStyle = TextStyle(
       fontSize: 26,
       color: statusColor,

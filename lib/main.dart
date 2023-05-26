@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         area: '',
         km: 0.8,
         maxSeats: 16,
-        seats: 15,
+        seats: 1,
         isStar: true,
       ),
       RestorantWidget(
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         area: '',
         km: 0.8,
         maxSeats: 16,
-        seats: 15,
+        seats: 5,
         isStar: true,
       ),
       RestorantWidget(
@@ -216,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Flexible(
-              flex: 7,
+              flex: 6,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child: SingleChildScrollView(
