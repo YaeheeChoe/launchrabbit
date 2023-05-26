@@ -27,7 +27,7 @@ class RestorantWidget extends StatelessWidget {
     Color statusColor = primaryColor;
     Color mainColor = primaryColor;
     TextStyle statusStyle = TextStyle(
-      fontSize: 20,
+      fontSize: 28,
       color: statusColor,
     );
     TextStyle nameStyle = TextStyle(
@@ -41,12 +41,7 @@ class RestorantWidget extends StatelessWidget {
       fontSize: 12,
     );
     return GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MapPage()),
-          );
-        },
+        onTap: () {},
         child: Container(
           padding: EdgeInsets.fromLTRB(16, 20, 16, 0),
           decoration: BoxDecoration(boxShadow: [
@@ -99,7 +94,12 @@ class RestorantWidget extends StatelessWidget {
                     style: menuStyle,
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MapPage()),
+                      );
+                    },
                     icon: Icon(
                       Icons.location_on,
                     ),

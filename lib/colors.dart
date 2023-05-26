@@ -11,7 +11,7 @@ const safeColor = Color(0xff1B8250);
 
 var defaultShadow = BoxShadow(
   color: Colors.grey.withOpacity(0.5),
-  offset: Offset(0, 2),
+  offset: Offset(0, 4),
   blurRadius: 4,
   spreadRadius: 0,
 );

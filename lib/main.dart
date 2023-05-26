@@ -147,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(top: 16),
             ),
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.only(top: 20, left: 16, right: 16, bottom: 8),
               child: Text(
                 '안녕! 좋은 점심이야~',
                 style: secondaryTextStyle,
@@ -176,7 +176,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(16),
+              padding:
+                  EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
               child: Text(
                 '상권선택',
                 style: menuTextStyle,
@@ -207,7 +208,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(16),
+              padding:
+                  EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
               child: Text(
                 '목록',
                 style: menuTextStyle,
