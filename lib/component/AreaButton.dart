@@ -18,6 +18,7 @@ class AreaButton extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: seconderyColor,
                   borderRadius: BorderRadius.circular(50.0),
+                  boxShadow: [defaultShadow],
                 ),
                 padding: EdgeInsets.all(10.0),
                 child: Row(

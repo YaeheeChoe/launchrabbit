@@ -164,7 +164,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   hintStyle: TextStyle(
                     color: textGray,
                   ),
-                  border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.circular(10.0), // 원하는 radius 값 설정
+                    borderSide: BorderSide.none, // 외곽선 없음
+                  ),
+
                   filled: true, // 배경색 s적용
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
@@ -178,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Flexible(
+              flex: 1,
               child: Container(
                 constraints: BoxConstraints(
                   minHeight: 100, // 최소 높이 설정
@@ -208,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Flexible(
-              flex: 8,
+              flex: 7,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child: SingleChildScrollView(
