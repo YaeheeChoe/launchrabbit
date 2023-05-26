@@ -47,68 +47,177 @@ class _MyHomePageState extends State<MyHomePage> {
     fontSize: 16,
     color: mainBlack,
   );
+  List<RestorantWidget> restorantWidgetList = [
+    RestorantWidget(
+      name: '신정문이당',
+      menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+      area: '',
+      km: 0.8,
+      maxSeats: 16,
+      seats: 15,
+      isStar: true,
+    ),
+    RestorantWidget(
+      name: '먹짜',
+      menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+      area: '',
+      km: 0.8,
+      maxSeats: 16,
+      seats: 15,
+      isStar: true,
+    ),
+    RestorantWidget(
+      name: '먹짜',
+      menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+      area: '',
+      km: 0.8,
+      maxSeats: 16,
+      seats: 1,
+      isStar: true,
+    ),
+    RestorantWidget(
+      name: '먹짜',
+      menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+      area: '',
+      km: 0.8,
+      maxSeats: 16,
+      seats: 5,
+      isStar: true,
+    ),
+    // ...
+  ];
+  Area _selectedArea = Area.Sinjeongmun;
+  void updateArea(Area area) {
+    setState(() {
+      _selectedArea = area;
+      if (_selectedArea == Area.Sinjeongmun) {
+        restorantWidgetList = [
+          RestorantWidget(
+            name: '신정문이당',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 15,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 15,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 1,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 5,
+            isStar: true,
+          ),
+          // ...
+        ];
+      } else if (_selectedArea == Area.Gujeongmun) {
+        restorantWidgetList = [
+          RestorantWidget(
+            name: '구정문이당',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 15,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 15,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 1,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 5,
+            isStar: true,
+          ),
+          // ...
+        ];
+      } else if (_selectedArea == Area.Sadaebugo) {
+        restorantWidgetList = [
+          RestorantWidget(
+            name: '사대부고당',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 15,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 15,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 1,
+            isStar: true,
+          ),
+          RestorantWidget(
+            name: '먹짜',
+            menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+            area: '',
+            km: 0.8,
+            maxSeats: 16,
+            seats: 5,
+            isStar: true,
+          ),
+          // ...
+        ];
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
-    Area _selectedArea = Area.Sinjeongmun;
 
-    List<RestorantWidget> restorantWidgetList = [
-      RestorantWidget(
-        name: '먹짜',
-        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-        area: '',
-        km: 0.8,
-        maxSeats: 16,
-        seats: 15,
-        isStar: true,
-      ),
-      RestorantWidget(
-        name: '먹짜',
-        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-        area: '',
-        km: 0.8,
-        maxSeats: 16,
-        seats: 15,
-        isStar: true,
-      ),
-      RestorantWidget(
-        name: '먹짜',
-        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-        area: '',
-        km: 0.8,
-        maxSeats: 16,
-        seats: 1,
-        isStar: true,
-      ),
-      RestorantWidget(
-        name: '먹짜',
-        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-        area: '',
-        km: 0.8,
-        maxSeats: 16,
-        seats: 5,
-        isStar: true,
-      ),
-      RestorantWidget(
-        name: '먹짜',
-        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-        area: '',
-        km: 0.8,
-        maxSeats: 16,
-        seats: 15,
-        isStar: true,
-      ),
-      RestorantWidget(
-        name: '먹짜',
-        menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-        area: '',
-        km: 0.8,
-        maxSeats: 16,
-        seats: 15,
-        isStar: true,
-      ),
-      // ...
-    ];
     void _showAction(BuildContext context, int index) {
       showDialog<void>(
         context: context,
@@ -194,14 +303,35 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     children: [
                       AreaButton(
-                          imagePath: 'assets/images/Sinjeongmun.png',
-                          buttonText: '신정문'),
+                        imagePath: 'assets/images/Sinjeongmun.png',
+                        buttonText: '신정문',
+                        color: _selectedArea == Area.Sinjeongmun
+                            ? highlightColor
+                            : seconderyColor,
+                        onPressed: () {
+                          updateArea(Area.Sinjeongmun);
+                        },
+                      ),
                       AreaButton(
-                          imagePath: 'assets/images/Gujeongmun.png',
-                          buttonText: '구정문'),
+                        imagePath: 'assets/images/Gujeongmun.png',
+                        buttonText: '구정문',
+                        color: _selectedArea == Area.Gujeongmun
+                            ? highlightColor
+                            : seconderyColor,
+                        onPressed: () {
+                          updateArea(Area.Gujeongmun);
+                        },
+                      ),
                       AreaButton(
-                          imagePath: 'assets/images/Sadaebugo.png',
-                          buttonText: '사대부고'),
+                        imagePath: 'assets/images/Sadaebugo.png',
+                        buttonText: '사대부고',
+                        color: _selectedArea == Area.Sadaebugo
+                            ? highlightColor
+                            : seconderyColor,
+                        onPressed: () {
+                          updateArea(Area.Sadaebugo);
+                        },
+                      ),
                     ],
                   ),
                 ),
