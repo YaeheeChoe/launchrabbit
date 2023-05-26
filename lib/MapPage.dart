@@ -8,8 +8,10 @@ class MapPage extends StatelessWidget {
   );
   TextStyle menuStyle = TextStyle(
     fontSize: 12,
-    color: textGray,
+    color: coolGray,
   );
+  TextStyle minStyle =
+      TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: warningColor);
   void _showModalBottomSheet(BuildContext context) {
     showModalBottomSheet<void>(
       context: context,
@@ -109,8 +111,54 @@ class MapPage extends StatelessWidget {
                     )
                   ],
                 ), //여기까지 아이콘 버튼
-                Text('20min'),
-                Text('예상 대기시간'),
+                Text('20 min', style: minStyle),
+                Text('예상 대기시간', style: menuStyle),
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/images/dubu.png'),
+                      Padding(padding: EdgeInsets.only(left: 16)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('무진장 순두부', style: nameStyle),
+                          Padding(padding: EdgeInsets.only(top: 4)),
+                          Text(
+                            '무진장 순두부의 대표메뉴',
+                            style: menuStyle,
+                          ),
+                          Padding(padding: EdgeInsets.only(top: 4)),
+                          Text('8000\\'),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/images/dubu2.png'),
+                      Padding(padding: EdgeInsets.only(left: 16)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('버섯 순두부', style: nameStyle),
+                          Padding(padding: EdgeInsets.only(top: 4)),
+                          Text(
+                            '무진장 순두부의 버섯메뉴',
+                            style: menuStyle,
+                          ),
+                          Padding(padding: EdgeInsets.only(top: 4)),
+                          Text('8000\\'),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
