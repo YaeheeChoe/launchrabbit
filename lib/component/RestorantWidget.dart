@@ -62,7 +62,7 @@ class RestorantWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.person,
+                      Icons.person_outline,
                       color: statusColor,
                     ),
                     Text(seats.toString(), style: statusStyle),
@@ -90,7 +90,7 @@ class RestorantWidget extends StatelessWidget {
                 style: kmStyle,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
                     onPressed: () {},

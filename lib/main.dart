@@ -444,7 +444,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ActionButton(
                 onPressed: () => _showAction(context, 1),
-                icon: const Icon(Icons.person_outline),
+                icon: const Icon(Icons.person),
               ),
               ActionButton(
                 onPressed: () => _showAction(context, 2),
