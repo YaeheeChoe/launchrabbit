@@ -56,67 +56,69 @@ class RestorantWidget extends StatelessWidget {
             defaultShadow,
           ], color: mainWhite, borderRadius: BorderRadius.circular(16)),
           child: Center(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Container(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      color: statusColor,
-                    ),
-                    Text(seats.toString(), style: statusStyle),
-                    Text(
-                      '/',
-                      style: statusStyle,
-                    ),
-                    Text(maxSeats.toString(), style: statusStyle),
-                  ],
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 4)),
-              Text(
-                name,
-                style: nameStyle,
-              ),
-              Padding(padding: EdgeInsets.only(top: 4)),
-              Text(
-                menu,
-                style: menuStyle,
-              ),
-              Padding(padding: EdgeInsets.only(top: 6)),
-              Text(
-                km.toString() + 'km',
-                style: kmStyle,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.star_border, size: 20),
-                    color: mainColor,
+                  Container(
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.person_outline,
+                          color: statusColor,
+                        ),
+                        Text(seats.toString(), style: statusStyle),
+                        Text(
+                          '/',
+                          style: statusStyle,
+                        ),
+                        Text(maxSeats.toString(), style: statusStyle),
+                      ],
+                    ),
                   ),
+                  Padding(padding: EdgeInsets.only(top: 4)),
                   Text(
-                    '|',
+                    name,
+                    style: nameStyle,
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 4)),
+                  Text(
+                    menu,
                     style: menuStyle,
                   ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MapPage()),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.location_on,
-                      size: 20,
-                    ),
-                    color: mainColor,
-                  )
-                ],
-              ),
-            ]),
+                  Padding(padding: EdgeInsets.only(top: 6)),
+                  Text(
+                    km.toString() + 'km',
+                    style: kmStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.star_border, size: 20),
+                        color: mainColor,
+                      ),
+                      Text(
+                        '|',
+                        style: menuStyle,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MapPage()),
+                          );
+                        },
+                        icon: Icon(
+                          Icons.location_on,
+                          size: 20,
+                        ),
+                        color: mainColor,
+                      )
+                    ],
+                  ),
+                ]),
           ),
         ));
   }
