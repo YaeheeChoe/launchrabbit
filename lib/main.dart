@@ -38,15 +38,70 @@ enum Area {
   Sadaebugo,
 }
 
+TextStyle menuTextStyle = TextStyle(
+  fontSize: 20,
+  color: mainBlack,
+);
+TextStyle secondaryTextStyle = TextStyle(
+  fontSize: 16,
+  color: mainBlack,
+);
+
 class _MyHomePageState extends State<MyHomePage> {
-  TextStyle menuTextStyle = TextStyle(
-    fontSize: 20,
-    color: mainBlack,
-  );
-  TextStyle secondaryTextStyle = TextStyle(
-    fontSize: 16,
-    color: mainBlack,
-  );
+  bool isSearching = false;
+  void toggleSearchResult() {
+    setState(() {
+      isSearching = !isSearching;
+      setState(() {
+        if (isSearching) {
+          _hintText = '돈까스';
+          restorantWidgetList = [
+            RestorantWidget(
+              name: '돈까스당',
+              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+              area: '',
+              km: 0.8,
+              maxSeats: 16,
+              seats: 15,
+              isStar: true,
+            ),
+            RestorantWidget(
+              name: '먹짜',
+              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+              area: '',
+              km: 0.8,
+              maxSeats: 16,
+              seats: 15,
+              isStar: true,
+            ),
+            RestorantWidget(
+              name: '먹짜',
+              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+              area: '',
+              km: 0.8,
+              maxSeats: 16,
+              seats: 1,
+              isStar: true,
+            ),
+            RestorantWidget(
+              name: '먹짜',
+              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
+              area: '',
+              km: 0.8,
+              maxSeats: 16,
+              seats: 5,
+              isStar: true,
+            ),
+            // ...
+          ];
+        } else {
+          _hintText = '검색';
+          updateArea(Area.Sinjeongmun);
+        }
+      });
+    });
+  }
+
   List<RestorantWidget> restorantWidgetList = [
     RestorantWidget(
       name: '신정문이당',
@@ -214,6 +269,9 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  TextEditingController _tcontroller = TextEditingController();
+  String _hintText = '검색';
+
   @override
   Widget build(BuildContext context) {
     const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
@@ -265,11 +323,15 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.all(16),
               child: TextField(
+                controller: _tcontroller,
+                onTap: () {
+                  toggleSearchResult();
+                },
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
                   fillColor: seconderyColor,
                   prefixIcon: Icon(Icons.search),
-                  hintText: '검색',
+                  hintText: _hintText,
                   hintStyle: TextStyle(
                     color: textGray,
                   ),
@@ -284,59 +346,61 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Padding(
-              padding:
-                  EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
-              child: Text(
-                '상권선택',
-                style: menuTextStyle,
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                constraints: BoxConstraints(
-                  minHeight: 100, // 최소 높이 설정
+            if (!isSearching)
+              Padding(
+                padding:
+                    EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
+                child: Text(
+                  '상권선택',
+                  style: menuTextStyle,
                 ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      AreaButton(
-                        imagePath: 'assets/images/Sinjeongmun.png',
-                        buttonText: '신정문',
-                        color: _selectedArea == Area.Sinjeongmun
-                            ? highlightColor
-                            : seconderyColor,
-                        onPressed: () {
-                          updateArea(Area.Sinjeongmun);
-                        },
-                      ),
-                      AreaButton(
-                        imagePath: 'assets/images/Gujeongmun.png',
-                        buttonText: '구정문',
-                        color: _selectedArea == Area.Gujeongmun
-                            ? highlightColor
-                            : seconderyColor,
-                        onPressed: () {
-                          updateArea(Area.Gujeongmun);
-                        },
-                      ),
-                      AreaButton(
-                        imagePath: 'assets/images/Sadaebugo.png',
-                        buttonText: '사대부고',
-                        color: _selectedArea == Area.Sadaebugo
-                            ? highlightColor
-                            : seconderyColor,
-                        onPressed: () {
-                          updateArea(Area.Sadaebugo);
-                        },
-                      ),
-                    ],
+              ),
+            if (!isSearching)
+              Flexible(
+                flex: 1,
+                child: Container(
+                  constraints: BoxConstraints(
+                    minHeight: 100, // 최소 높이 설정
+                  ),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        AreaButton(
+                          imagePath: 'assets/images/Sinjeongmun.png',
+                          buttonText: '신정문',
+                          color: _selectedArea == Area.Sinjeongmun
+                              ? highlightColor
+                              : seconderyColor,
+                          onPressed: () {
+                            updateArea(Area.Sinjeongmun);
+                          },
+                        ),
+                        AreaButton(
+                          imagePath: 'assets/images/Gujeongmun.png',
+                          buttonText: '구정문',
+                          color: _selectedArea == Area.Gujeongmun
+                              ? highlightColor
+                              : seconderyColor,
+                          onPressed: () {
+                            updateArea(Area.Gujeongmun);
+                          },
+                        ),
+                        AreaButton(
+                          imagePath: 'assets/images/Sadaebugo.png',
+                          buttonText: '사대부고',
+                          color: _selectedArea == Area.Sadaebugo
+                              ? highlightColor
+                              : seconderyColor,
+                          onPressed: () {
+                            updateArea(Area.Sadaebugo);
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
             Padding(
               padding:
                   EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
@@ -364,7 +428,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: FloatingActionButton(
               backgroundColor: seconderyColor,
               onPressed: () {
-                // 첫 번째 FloatingActionButton을 누를 때 동작
+                if (isSearching) {
+                  toggleSearchResult();
+                }
               },
               child: Icon(Icons.arrow_back),
             ),
