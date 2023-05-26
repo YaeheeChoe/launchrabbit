@@ -160,13 +160,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: menuTextStyle,
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) => AreaButton(),
+            Flexible(
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 100, // 최소 높이 설정
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      3,
+                      (index) => AreaButton(),
+                    ),
+                  ),
+                ),
               ),
             ),
             Padding(
@@ -176,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: menuTextStyle,
               ),
             ),
-            Expanded(
+            Flexible(
               flex: 8,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
