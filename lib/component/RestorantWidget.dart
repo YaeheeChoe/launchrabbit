@@ -91,7 +91,7 @@ class RestorantWidget extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.star_border, size: 16),
+                    icon: Icon(Icons.star_border),
                     color: mainColor,
                   ),
                   Text(
@@ -102,7 +102,6 @@ class RestorantWidget extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(
                       Icons.location_on,
-                      size: 16,
                     ),
                     color: mainColor,
                   )
