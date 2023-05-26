@@ -4,10 +4,15 @@ class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Map Page')),
-      body: Center(
-        child: Text('This is another page.'),
-      ),
-    );
+        resizeToAvoidBottomInset: false, // 키보드가 올라와도 배경 이미지가 밀려 올라가지 않도록
+        appBar: AppBar(title: Text('Map')),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/mapbg2.png'), // 배경 이미지
+            ),
+          ),
+        ));
   }
 }
