@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:launchrabbit/MapPage.dart';
 import '../colors.dart';
 
 class RestorantWidget extends StatelessWidget {
@@ -39,68 +40,76 @@ class RestorantWidget extends StatelessWidget {
     TextStyle kmStyle = TextStyle(
       fontSize: 12,
     );
-    return Container(
-      padding: EdgeInsets.fromLTRB(16, 20, 16, 0),
-      decoration: BoxDecoration(boxShadow: [
-        defaultShadow,
-      ], color: mainWhite, borderRadius: BorderRadius.circular(16)),
-      child: Center(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-            child: Row(
-              children: [
-                Icon(
-                  Icons.person,
-                  color: statusColor,
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MapPage()),
+          );
+        },
+        child: Container(
+          padding: EdgeInsets.fromLTRB(16, 20, 16, 0),
+          decoration: BoxDecoration(boxShadow: [
+            defaultShadow,
+          ], color: mainWhite, borderRadius: BorderRadius.circular(16)),
+          child: Center(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      color: statusColor,
+                    ),
+                    Text(seats.toString(), style: statusStyle),
+                    Text(
+                      '/',
+                      style: statusStyle,
+                    ),
+                    Text(maxSeats.toString(), style: statusStyle),
+                  ],
                 ),
-                Text(seats.toString(), style: statusStyle),
-                Text(
-                  '/',
-                  style: statusStyle,
-                ),
-                Text(maxSeats.toString(), style: statusStyle),
-              ],
-            ),
-          ),
-          Padding(padding: EdgeInsets.only(top: 8)),
-          Text(
-            name,
-            style: nameStyle,
-          ),
-          Padding(padding: EdgeInsets.only(top: 6)),
-          Text(
-            menu,
-            style: menuStyle,
-          ),
-          Padding(padding: EdgeInsets.only(top: 6)),
-          Text(
-            km.toString() + 'km',
-            style: kmStyle,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.star_border, size: 16),
-                color: mainColor,
               ),
+              Padding(padding: EdgeInsets.only(top: 8)),
               Text(
-                '|',
+                name,
+                style: nameStyle,
+              ),
+              Padding(padding: EdgeInsets.only(top: 6)),
+              Text(
+                menu,
                 style: menuStyle,
               ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.location_on,
-                  size: 16,
-                ),
-                color: mainColor,
-              )
-            ],
+              Padding(padding: EdgeInsets.only(top: 6)),
+              Text(
+                km.toString() + 'km',
+                style: kmStyle,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.star_border, size: 16),
+                    color: mainColor,
+                  ),
+                  Text(
+                    '|',
+                    style: menuStyle,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.location_on,
+                      size: 16,
+                    ),
+                    color: mainColor,
+                  )
+                ],
+              ),
+            ]),
           ),
-        ]),
-      ),
-    );
+        ));
   }
 }
