@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../colors.dart';
 
 class AreaButton extends StatelessWidget {
+  final String imagePath;
+  final String buttonText;
+
+  AreaButton({required this.imagePath, required this.buttonText});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,12 +23,12 @@ class AreaButton extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/images/Gujeongmun.png',
+                      imagePath,
                       fit: BoxFit.cover,
                     ),
                     Padding(padding: EdgeInsets.only(left: 16.0)),
                     Text(
-                      '구정문',
+                      buttonText,
                       style: TextStyle(fontSize: 16.0),
                     ),
                   ],

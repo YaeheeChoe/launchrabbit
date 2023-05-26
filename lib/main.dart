@@ -155,6 +155,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: EdgeInsets.all(16),
+              child: TextField(
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  fillColor: seconderyColor,
+                  prefixIcon: Icon(Icons.search),
+                  hintText: '검색',
+                  hintStyle: TextStyle(
+                    color: textGray,
+                  ),
+                  border: InputBorder.none,
+                  filled: true, // 배경색 s적용
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
               child: Text(
                 '상권선택',
                 style: menuTextStyle,
@@ -168,10 +185,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: List.generate(
-                      3,
-                      (index) => AreaButton(),
-                    ),
+                    children: [
+                      AreaButton(
+                          imagePath: 'assets/images/Sinjeongmun.png',
+                          buttonText: '신정문'),
+                      AreaButton(
+                          imagePath: 'assets/images/Gujeongmun.png',
+                          buttonText: '구정문'),
+                      AreaButton(
+                          imagePath: 'assets/images/Sadaebugo.png',
+                          buttonText: '사대부고'),
+                    ],
                   ),
                 ),
               ),
