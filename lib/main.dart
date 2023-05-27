@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.green,
       ),
       home: const MyHomePage(title: '안녕! 좋은 점심이야'),
     );
@@ -30,6 +30,12 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+}
+enum Fragment{
+  Home,
+  Search,
+  Favorite,
+  Setting,
 }
 
 enum Area {
@@ -48,12 +54,12 @@ TextStyle secondaryTextStyle = TextStyle(
 );
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isSearching = false;
+  Fragment fragment = Fragment.Home;
   void toggleSearchResult() {
     setState(() {
-      isSearching = !isSearching;
       setState(() {
-        if (isSearching) {
+        if (fragment == Fragment.Search) {
+          fragment = Fragment.Home;
           _hintText = '돈까스';
           restorantWidgetList = [
             RestorantWidget(
@@ -95,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // ...
           ];
         } else {
+          fragment = Fragment.Search;
           _hintText = '검색';
           updateArea(Area.Sinjeongmun);
         }
