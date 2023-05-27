@@ -353,7 +353,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            if (!isSearching)
+            if (fragment != Fragment.Search)
               Padding(
                 padding:
                     EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
@@ -362,7 +362,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: menuTextStyle,
                 ),
               ),
-            if (!isSearching)
+            if (fragment != Fragment.Search)
               Flexible(
                 flex: 1,
                 child: Container(
@@ -435,7 +435,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: FloatingActionButton(
               backgroundColor: seconderyColor,
               onPressed: () {
-                if (isSearching) {
+                if (fragment == Fragment.Search) {
                   toggleSearchResult();
                 }
               },
