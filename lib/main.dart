@@ -3,6 +3,7 @@ import 'package:launchrabbit/colors.dart';
 import 'package:launchrabbit/component/AreaButton.dart';
 import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
+import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.orange,
       ),
       home: const MyHomePage(title: '안녕! 좋은 점심이야'),
     );
@@ -441,27 +442,26 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 if (fragment == Fragment.Search) {
                   toggleSearchResult();
+                } else {
+                  Navigator.of(context).pop(true);
                 }
               },
               child: Icon(Icons.arrow_back),
             ),
           ),
-          ExpandableFab(
-            distance: 80.0,
-            children: [
-              ActionButton(
-                onPressed: () => _showAction(context, 0),
-                icon: const Icon(Icons.exit_to_app),
-              ),
-              ActionButton(
-                onPressed: () => _showAction(context, 1),
-                icon: const Icon(Icons.person),
-              ),
-              ActionButton(
-                onPressed: () => _showAction(context, 2),
-                icon: const Icon(Icons.star),
-              ),
-            ],
+          Container(
+            padding: EdgeInsets.only(left: 32),
+            child: FloatingActionButton(
+              backgroundColor: primaryColor,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => MyPage(),
+                  ),
+                );
+              },
+              child: Icon(Icons.menu),
+            ),
           ),
         ],
       ),
