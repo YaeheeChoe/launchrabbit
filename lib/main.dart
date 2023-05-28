@@ -31,7 +31,8 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-enum Fragment{
+
+enum Fragment {
   Home,
   Search,
   Favorite,
@@ -58,8 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void toggleSearchResult() {
     setState(() {
       setState(() {
-        if (fragment == Fragment.Search) {
-          fragment = Fragment.Home;
+        if (fragment != Fragment.Search) {
+          fragment = Fragment.Search;
           _hintText = '돈까스';
           restorantWidgetList = [
             RestorantWidget(
@@ -101,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // ...
           ];
         } else {
-          fragment = Fragment.Search;
+          fragment = Fragment.Home;
           _hintText = '검색';
           updateArea(Area.Sinjeongmun);
         }
@@ -284,20 +285,23 @@ class _MyHomePageState extends State<MyHomePage> {
     const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
 
     void _showAction(BuildContext context, int index) {
-      showDialog<void>(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text(_actionTitles[index]),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text('CLOSE'),
-              ),
-            ],
-          );
-        },
-      );
+      // 인덱스에 따라 원하는 동작을 수행하도록 구현
+      switch (index) {
+        case 0:
+          // 첫 번째 버튼의 동작
+          print('Pressed exit_to_app');
+          break;
+        case 1:
+          // 두 번째 버튼의 동작
+          print('Pressed person');
+          break;
+        case 2:
+          // 세 번째 버튼의 동작
+          print('Pressed star');
+          break;
+        default:
+          break;
+      }
     }
 
     return Scaffold(
