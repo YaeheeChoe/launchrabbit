@@ -20,17 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const MyHomePage(title: '안녕! 좋은 점심이야'),
+      home: const MyHomePage(),
     );
   }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 enum Fragment {
@@ -44,6 +36,13 @@ enum Area {
   Sinjeongmun,
   Gujeongmun,
   Sadaebugo,
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 TextStyle menuTextStyle = TextStyle(
@@ -71,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               km: 0.8,
               maxSeats: 16,
               seats: 15,
-              isStar: true,
+              isStar: false,
             ),
             RestorantWidget(
               name: '먹짜',
@@ -80,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               km: 0.9,
               maxSeats: 20,
               seats: 3,
-              isStar: true,
+              isStar: false,
             ),
             RestorantWidget(
               name: '돈가스집',
@@ -89,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               km: 1.6,
               maxSeats: 16,
               seats: 1,
-              isStar: true,
+              isStar: false,
             ),
             RestorantWidget(
               name: '무진장순두부',
@@ -128,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: true,
+      isStar: false,
     ),
     RestorantWidget(
       name: '콩샌',
@@ -137,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: true,
+      isStar: false,
     ),
     RestorantWidget(
       name: '에모이',
@@ -146,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: true,
+      isStar: false,
     ),
     // ...
   ];
@@ -172,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 1.2,
             maxSeats: 20,
             seats: 3,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '콩샌',
@@ -181,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.6,
             maxSeats: 10,
             seats: 8,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '에모이',
@@ -190,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.6,
             maxSeats: 16,
             seats: 10,
-            isStar: true,
+            isStar: false,
           ),
           // ...
         ];
@@ -203,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.8,
             maxSeats: 16,
             seats: 15,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '신전떡볶이',
@@ -212,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 1.2,
             maxSeats: 16,
             seats: 15,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '찌개랑',
@@ -221,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.6,
             maxSeats: 16,
             seats: 6,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '황제보쌈',
@@ -230,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.8,
             maxSeats: 16,
             seats: 11,
-            isStar: true,
+            isStar: false,
           ),
           // ...
         ];
@@ -243,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.8,
             maxSeats: 40,
             seats: 38,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '무진장 순두부',
@@ -261,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.6,
             maxSeats: 10,
             seats: 8,
-            isStar: true,
+            isStar: false,
           ),
           RestorantWidget(
             name: '모퉁이 덮밥',
@@ -270,7 +269,7 @@ class _MyHomePageState extends State<MyHomePage> {
             km: 0.6,
             maxSeats: 16,
             seats: 10,
-            isStar: true,
+            isStar: false,
           ),
           // ...
         ];
@@ -336,7 +335,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(16),
               child: TextField(
                 controller: _tcontroller,
-                onTap: () {
+                onSubmitted: (str) {
                   toggleSearchResult();
                 },
                 textAlignVertical: TextAlignVertical.center,

@@ -26,6 +26,7 @@ class RestorantWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Color statusColor = primaryColor;
     Color mainColor = primaryColor;
+    bool star = isStar;
 
     if (maxSeats - seats > 8) {
       statusColor = safeColor;
@@ -95,8 +96,12 @@ class RestorantWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.star_border, size: 20),
+                        onPressed: () {
+                          //isStar조정
+                        },
+                        icon: isStar
+                            ? Icon(Icons.star, size: 20)
+                            : Icon(Icons.star_border, size: 20),
                         color: mainColor,
                       ),
                       Text(
