@@ -56,51 +56,14 @@ TextStyle secondaryTextStyle = TextStyle(
 
 class _MyHomePageState extends State<MyHomePage> {
   Fragment fragment = Fragment.Home;
-  void toggleSearchResult() {
+  void toggleSearchResult(str) {
     setState(() {
       setState(() {
         if (fragment != Fragment.Search) {
           fragment = Fragment.Search;
-          _hintText = '돈까스';
-          restorantWidgetList = [
-            RestorantWidget(
-              name: '미스터빠삭',
-              menu: '돈까스 - 치즈돈까스 - 파스타',
-              area: '사대부고',
-              km: 0.8,
-              maxSeats: 16,
-              seats: 15,
-              isStar: false,
-            ),
-            RestorantWidget(
-              name: '먹짜',
-              menu: '돈까스 - 가츠나베 - 샐러드 돈까스',
-              area: '사대부고',
-              km: 0.9,
-              maxSeats: 20,
-              seats: 3,
-              isStar: false,
-            ),
-            RestorantWidget(
-              name: '돈가스집',
-              menu: '돈까스 - 치즈돈까스 - 매운 가츠나베',
-              area: '구정문',
-              km: 1.6,
-              maxSeats: 16,
-              seats: 1,
-              isStar: false,
-            ),
-            RestorantWidget(
-              name: '무진장순두부',
-              menu: '순두부찌개 - 돈까스 -청국장',
-              area: '사대부고',
-              km: 1.8,
-              maxSeats: 16,
-              seats: 8,
-              isStar: true,
-            ),
-            // ...
-          ];
+          nowWidgetList = restorantWidgetList.where((element) {
+            return element.name.contains(str) || element.menu.contains(str);
+          }).toList();
         } else {
           fragment = Fragment.Home;
           _hintText = '검색';
@@ -112,9 +75,72 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<RestorantWidget> restorantWidgetList = [
     RestorantWidget(
+      name: '부대통령 뚝배기',
+      menu: '제육볶음 - 부대찌개 - 낚지볶음 - 불고기',
+      area: '사대부고',
+      km: 0.8,
+      maxSeats: 40,
+      seats: 38,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '무진장 순두부',
+      menu: '순두부찌개 - 돈까스 - 청국장',
+      area: '사대부고',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: true,
+    ),
+    RestorantWidget(
+      name: 'TEAM레스토랑',
+      menu: '파스타 - 빠네',
+      area: '구정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '봉이 설렁탕',
+      menu: '설렁탕',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '우리집불고기',
+      menu: '불고기 - 카레순두부',
+      area: '사대부고',
+      km: 0.6,
+      maxSeats: 10,
+      seats: 8,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '모퉁이 덮밥',
+      menu: '모퉁이 덮밥 - 제육덮밥 - 스테이크 덮밥',
+      area: '사대부고',
+      km: 0.6,
+      maxSeats: 16,
+      seats: 10,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '900달러',
+      menu: '피자',
+      area: '구정문',
+      km: 0.6,
+      maxSeats: 16,
+      seats: 10,
+      isStar: false,
+    ),
+    RestorantWidget(
       name: '금암피순대',
       menu: '피순대 - 순대국밥 - 선지국밥',
-      area: '',
+      area: '신정문',
       km: 0.8,
       maxSeats: 40,
       seats: 38,
@@ -123,7 +149,52 @@ class _MyHomePageState extends State<MyHomePage> {
     RestorantWidget(
       name: '염가네 뼈해장국',
       menu: '뼈해장국',
-      area: '',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '덕천식당',
+      menu: '뼈해장국',
+      area: '구정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '오타마',
+      menu: '일식',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '치히로',
+      menu: '라멘',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '야미',
+      menu: '알밥',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '주인테이블',
+      menu: '전골',
+      area: '구정문',
       km: 1.2,
       maxSeats: 20,
       seats: 3,
@@ -132,7 +203,118 @@ class _MyHomePageState extends State<MyHomePage> {
     RestorantWidget(
       name: '콩샌',
       menu: '샌드위치',
-      area: '',
+      area: '신정문',
+      km: 0.6,
+      maxSeats: 10,
+      seats: 8,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '꽁꼬르드',
+      menu: '파스타 - 리조또',
+      area: '사대부고',
+      km: 0.6,
+      maxSeats: 10,
+      seats: 8,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '하랑',
+      menu: '연어 - 이자카야',
+      area: '사대부고',
+      km: 0.6,
+      maxSeats: 10,
+      seats: 8,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '코츠모',
+      menu: '오코노미야끼',
+      area: '사대부고',
+      km: 0.6,
+      maxSeats: 10,
+      seats: 8,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '피스비',
+      menu: '파스타',
+      area: '신정문',
+      km: 0.6,
+      maxSeats: 16,
+      seats: 10,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '에모이',
+      menu: '쌀국수',
+      area: '신정문',
+      km: 0.6,
+      maxSeats: 16,
+      seats: 10,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '낙곱새',
+      menu: '낙지 - 곱창 - 새우',
+      area: '구정문',
+      km: 0.8,
+      maxSeats: 16,
+      seats: 15,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '신전떡볶이',
+      menu: '신전떡볶이 - 치즈떡볶이 - 주먹밥',
+      area: '구정문',
+      km: 1.2,
+      maxSeats: 16,
+      seats: 15,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '찌개랑',
+      menu: '된장찌개 - 부대찌개',
+      area: '구정문',
+      km: 0.6,
+      maxSeats: 16,
+      seats: 6,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '황제보쌈',
+      menu: '보쌈정식',
+      area: '구정문',
+      km: 0.8,
+      maxSeats: 16,
+      seats: 11,
+      isStar: false,
+    ),
+    // ...
+  ];
+  List<RestorantWidget> nowWidgetList = [
+    RestorantWidget(
+      name: '금암피순대',
+      menu: '피순대 - 순대국밥 - 선지국밥',
+      area: '신정문',
+      km: 0.8,
+      maxSeats: 40,
+      seats: 38,
+      isStar: true,
+    ),
+    RestorantWidget(
+      name: '염가네 뼈해장국',
+      menu: '뼈해장국',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+      isStar: false,
+    ),
+    RestorantWidget(
+      name: '콩샌',
+      menu: '샌드위치',
+      area: '신정문',
       km: 0.6,
       maxSeats: 10,
       seats: 8,
@@ -141,139 +323,31 @@ class _MyHomePageState extends State<MyHomePage> {
     RestorantWidget(
       name: '에모이',
       menu: '쌀국수',
-      area: '',
+      area: '신정문',
       km: 0.6,
       maxSeats: 16,
       seats: 10,
       isStar: false,
     ),
-    // ...
   ];
   Area _selectedArea = Area.Sinjeongmun;
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
       if (_selectedArea == Area.Sinjeongmun) {
-        restorantWidgetList = [
-          RestorantWidget(
-            name: '금암피순대',
-            menu: '피순대 - 순대국밥 - 선지국밥',
-            area: '',
-            km: 0.8,
-            maxSeats: 40,
-            seats: 38,
-            isStar: true,
-          ),
-          RestorantWidget(
-            name: '염가네 뼈해장국',
-            menu: '뼈해장국',
-            area: '',
-            km: 1.2,
-            maxSeats: 20,
-            seats: 3,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '콩샌',
-            menu: '샌드위치',
-            area: '',
-            km: 0.6,
-            maxSeats: 10,
-            seats: 8,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '에모이',
-            menu: '쌀국수',
-            area: '',
-            km: 0.6,
-            maxSeats: 16,
-            seats: 10,
-            isStar: false,
-          ),
-          // ...
-        ];
+        nowWidgetList = restorantWidgetList.where((element) {
+          return element.area == '신정문';
+        }).toList();
       } else if (_selectedArea == Area.Gujeongmun) {
-        restorantWidgetList = [
-          RestorantWidget(
-            name: '낙곱새',
-            menu: '낙지 - 곱창 - 새우',
-            area: '',
-            km: 0.8,
-            maxSeats: 16,
-            seats: 15,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '신전떡볶이',
-            menu: '신전떡볶이 - 치즈떡볶이 - 주먹밥',
-            area: '',
-            km: 1.2,
-            maxSeats: 16,
-            seats: 15,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '찌개랑',
-            menu: '된장찌개 - 부대찌개',
-            area: '',
-            km: 0.6,
-            maxSeats: 16,
-            seats: 6,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '황제보쌈',
-            menu: '보쌈정식',
-            area: '',
-            km: 0.8,
-            maxSeats: 16,
-            seats: 11,
-            isStar: false,
-          ),
-          // ...
-        ];
+        nowWidgetList = restorantWidgetList.where((element) {
+          return element.area == '구정문';
+        }).toList();
       } else if (_selectedArea == Area.Sadaebugo) {
-        restorantWidgetList = [
-          RestorantWidget(
-            name: '부대통령 뚝배기',
-            menu: '제육볶음 - 부대찌개 - 낚지볶음 - 불고기',
-            area: '',
-            km: 0.8,
-            maxSeats: 40,
-            seats: 38,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '무진장 순두부',
-            menu: '순두부찌개 - 돈까스 - 청국장',
-            area: '',
-            km: 1.2,
-            maxSeats: 20,
-            seats: 3,
-            isStar: true,
-          ),
-          RestorantWidget(
-            name: '우리집불고기',
-            menu: '불고기 - 카레순두부',
-            area: '',
-            km: 0.6,
-            maxSeats: 10,
-            seats: 8,
-            isStar: false,
-          ),
-          RestorantWidget(
-            name: '모퉁이 덮밥',
-            menu: '모퉁이 덮밥 - 제육덮밥 - 스테이크 덮밥',
-            area: '',
-            km: 0.6,
-            maxSeats: 16,
-            seats: 10,
-            isStar: false,
-          ),
-          // ...
-        ];
+        nowWidgetList = restorantWidgetList.where((element) {
+          return element.area == '사대부고';
+        }).toList();
       }
+      nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
     });
   }
 
@@ -336,7 +410,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextField(
                 controller: _tcontroller,
                 onSubmitted: (str) {
-                  toggleSearchResult();
+                  toggleSearchResult(str);
                 },
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
@@ -425,7 +499,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child: SingleChildScrollView(
-                    child: WidgetList(widgetList: restorantWidgetList),
+                    child: WidgetList(widgetList: nowWidgetList),
                   )),
             ),
           ],
@@ -440,7 +514,7 @@ class _MyHomePageState extends State<MyHomePage> {
               backgroundColor: seconderyColor,
               onPressed: () {
                 if (fragment == Fragment.Search) {
-                  toggleSearchResult();
+                  toggleSearchResult('');
                 } else {
                   Navigator.of(context).pop(true);
                 }
