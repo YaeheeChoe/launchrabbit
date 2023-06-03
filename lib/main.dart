@@ -56,15 +56,25 @@ TextStyle secondaryTextStyle = TextStyle(
 
 class _MyHomePageState extends State<MyHomePage> {
   Fragment fragment = Fragment.Home;
+
+  // 문제가 발생하는 이유
+  // 1. 검색한 상태와 검색 안한 상태로 나눴음
+  // 2. 검색을 하면 프레그먼트 스테이먼트가 변하게 해놧음
   void toggleSearchResult(str) {
     setState(() {
       setState(() {
+        // 검색을 했을때
         if (fragment != Fragment.Search) {
           fragment = Fragment.Search;
+          // now위젯리스트가 지금 보이는 위젯리스트인데, 
+          // 레스토랑위젯리스트는 전체 위젯 목록이다
+          // 근데 여기에다 필터를 줘서 검색 기능을 처리했다(element가 필터링)
           nowWidgetList = restorantWidgetList.where((element) {
             return element.name.contains(str) || element.menu.contains(str);
           }).toList();
-        } else {
+        }
+        // 검색을 안했을때 
+        else {
           fragment = Fragment.Home;
           _hintText = '검색';
           updateArea(Area.Sinjeongmun);
@@ -407,10 +417,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: EdgeInsets.all(16),
+              // 수비할일: 검색화면에서 벗어낫을때 여기를 건드려서 텍스트가 지워지게 해야함.
               child: TextField(
                 controller: _tcontroller,
                 onSubmitted: (str) {
-                  toggleSearchResult(str);
+                  toggleSearchResult(str); // 이게 검색화면으로 전환하는 부분
+
                 },
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
@@ -447,9 +459,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   constraints: BoxConstraints(
                     minHeight: 100, // 최소 높이 설정
                   ),
-                  child: SingleChildScrollView(
+                  // 스크롤 설정하는 기능인데 사이드 설정 옵션을 줫음
+                  child: SingleChildScrollView( 
                     scrollDirection: Axis.horizontal,
+                    // 식당찾기 메인화면에서 상권 버튼 1행 배치
                     child: Row(
+                      // 상권버튼 설정
                       children: [
                         AreaButton(
                           imagePath: 'assets/images/Sinjeongmun.png',
@@ -494,11 +509,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: menuTextStyle,
               ),
             ),
+            // 검색 필요...
             Flexible(
               flex: 6,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
+                  // 목록 스크롤 되도록 설정
                   child: SingleChildScrollView(
+                    // 위젯리스트가 목록에 보이는 식당 리스트
+                    // 수비할일2: 위젯리스트가 없을때 텍스트가 보이게 처리해야함
                     child: WidgetList(widgetList: nowWidgetList),
                   )),
             ),

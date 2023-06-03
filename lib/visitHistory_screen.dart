@@ -5,6 +5,10 @@ class VisitHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 회일 할일:
+      // 여기에다 랭킹 아이콘 추가하기
+      // 누르면 랭킹 페이지로 이동
+      // 새 페이지 생성해서 알잘딱으로 레이아웃 따기...
       appBar: AppBar(
         centerTitle: true,
         title: Text(
