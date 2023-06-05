@@ -1,5 +1,13 @@
 // lib/screens/first_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:launchrabbit/colors.dart';
+import 'package:launchrabbit/component/AreaButton.dart';
+import 'package:launchrabbit/component/ExpandableFab.dart';
+import 'package:launchrabbit/component/WidgetList.dart';
+import 'package:launchrabbit/mypage_screen.dart';
+import 'package:launchrabbit/visitRanking_screen.dart';
+import './component/RestorantWidget.dart';
 
 class VisitHistory extends StatelessWidget {
   @override
@@ -17,6 +25,25 @@ class VisitHistory extends StatelessWidget {
             fontSize: 23,
           ),
         ),
+        //앱바 오른쪽에 아이콘 배치
+        actions: <Widget>[
+              Container(
+                padding: EdgeInsets.only(left: 32),
+                child: FloatingActionButton(
+                  backgroundColor: primaryColor,
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        // 방문기록 랭킹 페이지로 이동
+                        builder: (BuildContext context) => VisitRankingPage(),
+                      ),
+                    );
+                  },
+                  // 구글 폰트에서 트로피 아이콘 받아옴
+                  child: Icon(Icons.emoji_events),
+                ),
+              ),
+        ],
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -195,6 +222,7 @@ class VisitHistory extends StatelessWidget {
                     style: TextStyle(fontSize: 23, color: Colors.purple)),
               ],
             ),
+            
           ],
         ),
       ),
