@@ -505,24 +505,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 '목록',
                 style: menuTextStyle,
               ),
-              AnimatedToggleSwitch<bool>.dual(
+              Row(
+                children: [
+                  Text('즐겨찾기',style: secondaryTextStyle,)
+                  ,
+                  CustomAnimatedToggleSwitch<bool>(
                 current: isShowStars,
-                first: false,
-                second: true,
-                dif: 50.0,
-                borderColor: Colors.transparent,
-                borderWidth: 5.0,
-                height: 55,
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black26,
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 1.5),
-                  ),
-                ],
-                onChanged: (b) {
-                  setState(() => isShowStars = b);
+                values: [false, true],
+                dif: 0.0,
+                indicatorSize: Size.square(30.0),
+                animationDuration: const Duration(milliseconds: 200),
+                animationCurve: Curves.linear,
+                onChanged: (b) => setState(() => isShowStars = b),
+                iconBuilder: (context, local, global) {
+                  return const SizedBox();
+                },
+                defaultCursor: SystemMouseCursors.click,
+                onTap: () {
+                  setState(() => isShowStars = !isShowStars);
                   if(isShowStars)
                   {
                     nowWidgetList = restorantWidgetList.where((element) {
@@ -534,16 +534,53 @@ class _MyHomePageState extends State<MyHomePage> {
                       return element.area == areaNames[_selectedArea.index] ;
                     }).toList();
                   }
-                  return Future.delayed(Duration(seconds: 2));
                 },
-                colorBuilder: (b) => b ? highlightColor : seconderyColor,
-                iconBuilder: (value) => value
-                    ? Icon(Icons.star_border_rounded )
-                    : Icon(Icons.menu_open),
-                textBuilder: (value) => value
-                    ? Center(child: Text('즐겨찾기'))
-                    : Center(child: Text('전체목록')),
+                iconsTappable: false,
+                wrapperBuilder: (context, global, child) {
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                          left: 10.0,
+                          right: 10.0,
+                          height: 20.0,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Color.lerp(
+                                  Colors.black26,
+                                  Colors.black26,
+                                  global.position),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(50.0)),
+                            ),
+                          )),
+                      child,
+                    ],
+                  );
+                },
+                foregroundIndicatorBuilder: (context, global) {
+                  return SizedBox.fromSize(
+                    size: global.indicatorSize,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Color.lerp(
+                            Colors.white, primaryColor, global.position),
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black38,
+                              spreadRadius: 0.05,
+                              blurRadius: 1.1,
+                              offset: Offset(0.0, 0.8))
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
+                ],
+              ),
+              
 
               ],)
             ),
