@@ -41,6 +41,7 @@ enum Area {
   Sadaebugo,
 }
 
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -334,22 +335,23 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
+  List<String> areaNames = ['신정문', '구정문', '사대부고'];
   bool isShowStars = true;
-
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
+      isShowStars = false;
       if (_selectedArea == Area.Sinjeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '신정문';
+          return element.area == areaNames[Area.Sinjeongmun.index];
         }).toList();
       } else if (_selectedArea == Area.Gujeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '구정문';
+          return element.area == areaNames[Area.Gujeongmun.index];
         }).toList();
       } else if (_selectedArea == Area.Sadaebugo) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '사대부고';
+          return element.area == areaNames[Area.Sadaebugo.index];
         }).toList();
       }
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
@@ -524,12 +526,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   if(isShowStars)
                   {
                     nowWidgetList = restorantWidgetList.where((element) {
-                      return element.area == '신정문'&& element.isStar == true;
+                      return element.area == areaNames[_selectedArea.index] && element.isStar == true;
                     }).toList();
                   }
                   else{
                     nowWidgetList = restorantWidgetList.where((element) {
-                      return element.area == '신정문';
+                      return element.area == areaNames[_selectedArea.index] ;
                     }).toList();
                   }
                   return Future.delayed(Duration(seconds: 2));
