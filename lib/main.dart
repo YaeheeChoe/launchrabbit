@@ -6,7 +6,7 @@ import 'package:launchrabbit/component/WidgetList.dart';
 import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-
+import 'enums.dart';
 
 
 void main() {
@@ -26,19 +26,6 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
     );
   }
-}
-
-enum Fragment {
-  Home,
-  Search,
-  Favorite,
-  Setting,
-}
-
-enum Area {
-  Sinjeongmun,
-  Gujeongmun,
-  Sadaebugo,
 }
 
 
