@@ -16,7 +16,6 @@ class WidgetList extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 10.0,
         crossAxisSpacing: 10.0,
-        childAspectRatio: 1.0,
       ),
       itemBuilder: (context, index) {
         return widgetList[index];
