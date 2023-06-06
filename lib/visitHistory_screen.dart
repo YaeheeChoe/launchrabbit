@@ -8,8 +8,11 @@ import 'package:launchrabbit/component/WidgetList.dart';
 import 'package:launchrabbit/mypage_screen.dart';
 import 'package:launchrabbit/visitRanking_screen.dart';
 import './component/RestorantWidget.dart';
+import 'package:launchrabbit/main.dart';
+
 
 class VisitHistory extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

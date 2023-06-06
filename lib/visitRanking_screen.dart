@@ -7,7 +7,6 @@ import 'package:launchrabbit/component/WidgetList.dart';
 import './component/RestorantWidget.dart';
 
 
-
 // 방문기록 랭킹 페이지
 class VisitRankingPage extends StatelessWidget {
   List<RestorantWidget> stars = [
