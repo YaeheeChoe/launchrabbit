@@ -417,7 +417,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: EdgeInsets.all(16),
-              // 수비 할일: 검색화면에서 벗어낫을때 여기를 건드려서 텍스트가 지워지게 해야함.
+              // 수비 할 일: 검색 화면에서 벗어낫을때 여기를 건드려서 텍스트가 지워지게 해야함.
               child: TextField(
                 controller: _tcontroller,
                 onSubmitted: (str) {
@@ -512,18 +512,26 @@ class _MyHomePageState extends State<MyHomePage> {
             // 검색 필요...
             Flexible(
               flex: 6,
-              child: Container(
+              child: Container( 
+                  // 위젯리스트가 목록에 보이는 식당 리스트
+                  // 수비할일2: 위젯리스트가 없을때 텍스트가 보이게 처리해야함
                   margin: EdgeInsets.only(left: 10, right: 10),
                   // 목록 스크롤 되도록 설정
                   child: SingleChildScrollView(
-                    // 위젯리스트가 목록에 보이는 식당 리스트
-                    // 수비할일2: 위젯리스트가 없을때 텍스트가 보이게 처리해야함
-                    child: WidgetList(widgetList: nowWidgetList),
-                  )),
+                    child: nowWidgetList.isEmpty ?
+                    Text('식당이 없습니다.',
+                    style: TextStyle(fontSize: 40,
+                    fontWeight: FontWeight.bold
+                    ),
+                    textAlign: TextAlign.center,
+                    ): WidgetList(widgetList: nowWidgetList),
+                    )
+                  )
+                  ),
+          ]
             ),
-          ],
         ),
-      ),
+      );
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
