@@ -511,6 +511,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              heroTag: "backBtn",
               backgroundColor: seconderyColor,
               onPressed: () {
                 if (fragment == Fragment.Search) {
@@ -525,6 +526,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              heroTag: "menuBtn",
               backgroundColor: primaryColor,
               onPressed: () {
                 Navigator.of(context).push(
