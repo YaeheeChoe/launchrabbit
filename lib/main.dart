@@ -323,11 +323,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   Area _selectedArea = Area.Sinjeongmun;
   List<String> areaNames = ['신정문', '구정문', '사대부고'];
-  bool isShowStars = true;
+  bool isShowStars = false;
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
-      isShowStars = false;
       if (_selectedArea == Area.Sinjeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
           return element.area == areaNames[Area.Sinjeongmun.index];
