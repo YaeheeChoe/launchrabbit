@@ -47,7 +47,7 @@ TextStyle secondaryTextStyle = TextStyle(
 
 class _MyHomePageState extends State<MyHomePage> {
   Fragment fragment = Fragment.Home;
-
+  
   // 문제가 발생하는 이유
   // 1. 검색한 상태와 검색 안한 상태로 나눴음
   // 2. 검색을 하면 프레그먼트 스테이먼트가 변하게 해놧음

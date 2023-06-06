@@ -9,10 +9,23 @@ import 'package:launchrabbit/mypage_screen.dart';
 import 'package:launchrabbit/visitRanking_screen.dart';
 import './component/RestorantWidget.dart';
 import 'package:launchrabbit/main.dart';
+import 'enums.dart';
 
 
-class VisitHistory extends StatelessWidget {
+class VisitHistory extends StatefulWidget {
+const VisitHistory({super.key});
 
+  @override
+  State<VisitHistory> createState() => _VisitHistoryState();
+}
+class _VisitHistoryState extends State<VisitHistory>
+{
+  Area _selectedArea = Area.Sinjeongmun;
+    void updateArea(Area area) {
+      setState(() {
+        _selectedArea = area;
+      });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +65,44 @@ class VisitHistory extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: ListView(
           children: <Widget>[
+              SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        AreaButton(
+                          imagePath: 'assets/images/Sinjeongmun.png',
+                          buttonText: '신정문',
+                          color: _selectedArea == Area.Sinjeongmun
+                              ? highlightColor
+                              : seconderyColor,
+                          onPressed: () {
+                            updateArea(Area.Sinjeongmun);
+                          },
+                        ),
+                        AreaButton(
+                          imagePath: 'assets/images/Gujeongmun.png',
+                          buttonText: '구정문',
+                          color: _selectedArea == Area.Gujeongmun
+                              ? highlightColor
+                              : seconderyColor,
+                          onPressed: () {
+                            updateArea(Area.Gujeongmun);
+                          },
+                        ),
+                        AreaButton(
+                          imagePath: 'assets/images/Sadaebugo.png',
+                          buttonText: '사대부고',
+                          color: _selectedArea == Area.Sadaebugo
+                              ? highlightColor
+                              : seconderyColor,
+                          onPressed: () {
+                            updateArea(Area.Sadaebugo);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+
             Container(
               margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
               child: Row(
