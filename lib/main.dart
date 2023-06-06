@@ -5,6 +5,9 @@ import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
 import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -331,6 +334,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
+  bool isShowStars = true;
+
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
@@ -489,10 +494,56 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding:
                   EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
-              child: Text(
+                  
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+               Text(
                 '목록',
                 style: menuTextStyle,
               ),
+              AnimatedToggleSwitch<bool>.dual(
+                current: isShowStars,
+                first: false,
+                second: true,
+                dif: 50.0,
+                borderColor: Colors.transparent,
+                borderWidth: 5.0,
+                height: 55,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: Offset(0, 1.5),
+                  ),
+                ],
+                onChanged: (b) {
+                  setState(() => isShowStars = b);
+                  if(isShowStars)
+                  {
+                    nowWidgetList = restorantWidgetList.where((element) {
+                      return element.area == '신정문'&& element.isStar == true;
+                    }).toList();
+                  }
+                  else{
+                    nowWidgetList = restorantWidgetList.where((element) {
+                      return element.area == '신정문';
+                    }).toList();
+                  }
+                  return Future.delayed(Duration(seconds: 2));
+                },
+                colorBuilder: (b) => b ? highlightColor : seconderyColor,
+                iconBuilder: (value) => value
+                    ? Icon(Icons.star_border_rounded )
+                    : Icon(Icons.menu_open),
+                textBuilder: (value) => value
+                    ? Center(child: Text('즐겨찾기'))
+                    : Center(child: Text('전체목록')),
+              ),
+
+              ],)
             ),
             Flexible(
               flex: 6,
