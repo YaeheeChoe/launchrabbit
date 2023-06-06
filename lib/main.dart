@@ -329,15 +329,15 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedArea = area;
       if (_selectedArea == Area.Sinjeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Sinjeongmun.index];
+          return element.area == areaNames[Area.Sinjeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Gujeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Gujeongmun.index];
+          return element.area == areaNames[Area.Gujeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Sadaebugo) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Sadaebugo.index];
+          return element.area == areaNames[Area.Sadaebugo.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       }
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
