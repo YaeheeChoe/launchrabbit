@@ -548,7 +548,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             decoration: BoxDecoration(
                               color: Color.lerp(
                                   Colors.black26,
-                                  Colors.black26,
+                                  highlightColor,
                                   global.position),
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(50.0)),
