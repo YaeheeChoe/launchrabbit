@@ -67,6 +67,9 @@ flutter:
     - assets/images/mapbg2.png
     - assets/images/dubu.png
     - assets/images/dubu2.png
+    - assets/images/rank_1.png
+    - assets/images/rank_2.png
+    - assets/images/rank_3.png
 
 
   #  - images/a_dot_ham.jpeg
