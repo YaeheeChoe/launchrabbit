@@ -65,88 +65,29 @@ class _RestorantWidgetState extends State<RestorantWidget> {
       color: mainBlack,
       fontWeight: FontWeight.w600,
     );
-
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-        decoration: BoxDecoration(
-          boxShadow: [defaultShadow],
-          color: mainWhite,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+  return Container(
+  padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+  decoration: BoxDecoration(
+    boxShadow: [defaultShadow],
+    color: mainWhite,
+    borderRadius: BorderRadius.circular(16),
+  ),
+    child: Container(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      color: statusColor,
-                    ),
-                    Text(widget.seats.toString(), style: statusStyle),
-                    Text(
-                      '/',
-                      style: statusStyle,
-                    ),
-                    Text(widget.maxSeats.toString(), style: statusStyle),
-                  ],
-                ),
+              Image.asset('assets/images/rank_1.png',
+              width: 50,
+              height: 50,
               ),
-              Padding(padding: EdgeInsets.only(top: 4)),
-              Text(
-                widget.name,
-                style: nameStyle,
-              ),
-              Padding(padding: EdgeInsets.only(top: 4)),
-              Text(
-                widget.menu,
-                style: menuStyle,
-              ),
-              Padding(padding: EdgeInsets.only(top: 6)),
-              Text(
-                widget.km.toString() + 'km',
-                style: kmStyle,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      setState(() {
-                        star = !star;
-                      });
-                    },
-                    icon: star
-                        ? Icon(Icons.star, size: 20)
-                        : Icon(Icons.star_border, size: 20),
-                    color: mainColor,
-                  ),
-                  Text(
-                    '|',
-                    style: menuStyle,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MapPage()),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.location_on,
-                      size: 
- 20,
-                        ),
-                        color: mainColor,
-                      )
-                    ],
-                  ),
-                ]),
-          ),
-        ));
+              // Icon(
+              //   Icons.person_outline,
+              // ),
+              Text('금암순대 ', style: TextStyle(fontSize: 20)),
+              Text('방문 횟수: 10', style: TextStyle(fontSize: 20)),
+            ],
+        ),            
+      ),
+    );
   }
 }
