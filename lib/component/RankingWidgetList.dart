@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './RestorantRankingWidget.dart';
+import '../colors.dart';
 
 class RankingWidgetList extends StatelessWidget {
   final List<RestorantRankingWidget> widgetList;
@@ -17,9 +18,20 @@ class RankingWidgetList extends StatelessWidget {
       itemBuilder: (context, index) {
         return
         Container(
-          child: Row(
+          height: 68,
+          margin: EdgeInsets.symmetric(vertical: 5),
+          padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+          decoration: BoxDecoration(
+            boxShadow: [defaultShadow],
+            color: mainWhite,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: 
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              (index < 4) ? 
+              (index < 3 ) ? 
               (
                 (index ==0 ) ? 
                   Image.asset('assets/images/rank_1.png',
@@ -36,11 +48,21 @@ class RankingWidgetList extends StatelessWidget {
                     width: 50,
                     height: 50)
                   :
-                    Text('4')
-              )
+                  Padding(
+                    padding: EdgeInsets.only(left: 12, right: 12),
+                    child:Text('4', style: TextStyle(fontSize: 20),
+                  )
+              ))
               :
-              Text('5')
-              ,
+              Container(
+                    width: 48,
+                    padding: EdgeInsets.only(left: 14),
+                    child:Text((index+1).toString(), style: TextStyle(fontSize: 20),
+                  ))         ,
+                  Image.asset(widgetList[index].restorantImagePath,
+                  width: 40,
+                  height: 40,
+                ),
               widgetList[index]
             ],
           ),

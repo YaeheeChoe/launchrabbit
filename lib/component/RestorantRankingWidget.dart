@@ -45,43 +45,28 @@ class _RestorantRankingWidgetState extends State<RestorantRankingWidget> {
         ),
       );
     },
-    child: Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-      decoration: BoxDecoration(
-        boxShadow: [defaultShadow],
-        color: mainWhite,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Container(
+    child: 
+        Container(
+          width: 200,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-
-            Container(
-              child: Row(children:[
-                
-                Padding(padding: EdgeInsets.only(left: 30)),
-                Image.asset(widget.restorantImagePath,
-                  width: 40,
-                  height: 40,
-                ),
-              ]),
-            ), 
-            Text(
-                  widget.name,
-                  style: nameStyle,
-                ),
-
-            Text(
-                  "방문: " + widget.visitNum.toString(),
-                  style: visitNumStyle,
-                ),
-              
-            ],
-          ),            
-        ),
-      ),
+                  children:[
+                    Padding(padding: EdgeInsets.only(
+                      left: 12,),
+                      child:
+                  Text(
+                    widget.name,
+                    style: nameStyle,
+                  ),
+                    ),
+                  Text(
+                        "방문 : " + widget.visitNum.toString(),
+                        style: visitNumStyle,
+                      ),
+                ]),
+          ),       
+    
+    
     );
   }
 }
