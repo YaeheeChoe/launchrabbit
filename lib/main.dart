@@ -5,6 +5,9 @@ import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
 import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'enums.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -25,18 +28,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-enum Fragment {
-  Home,
-  Search,
-  Favorite,
-  Setting,
-}
-
-enum Area {
-  Sinjeongmun,
-  Gujeongmun,
-  Sadaebugo,
-}
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -331,26 +322,33 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
+  List<String> areaNames = ['신정문', '구정문', '사대부고'];
+  bool isShowStars = false;
+  void toggleRestorantStar(RestorantWidget wg){
+    var i= restorantWidgetList.indexOf(wg);
+    setState(() {
+      //restorantWidgetList[i].isStar = !restorantWidgetList[i].isStar;
+    });
+  }
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
       if (_selectedArea == Area.Sinjeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '신정문';
+          return element.area == areaNames[Area.Sinjeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Gujeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '구정문';
+          return element.area == areaNames[Area.Gujeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Sadaebugo) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '사대부고';
+          return element.area == areaNames[Area.Sadaebugo.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       }
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
     });
   }
-
   TextEditingController _tcontroller = TextEditingController();
   String _hintText = '검색';
 
@@ -421,12 +419,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: textGray,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.circular(10.0), // 원하는 radius 값 설정
+                    borderRadius:BorderRadius.circular(10.0), // 원하는 radius 값 설정
                     borderSide: BorderSide.none, // 외곽선 없음
                   ),
 
-                  filled: true, // 배경색 s적용
+                  filled: true, // 배경색 적용
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
               ),
@@ -489,10 +486,93 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding:
                   EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
-              child: Text(
+                  
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+               Text(
                 '목록',
                 style: menuTextStyle,
               ),
+              Row(
+                children: [
+                  Text('즐겨찾기',style: secondaryTextStyle,)
+                  ,
+                  CustomAnimatedToggleSwitch<bool>(
+                current: isShowStars,
+                values: [false, true],
+                dif: 0.0,
+                indicatorSize: Size.square(30.0),
+                animationDuration: const Duration(milliseconds: 200),
+                animationCurve: Curves.linear,
+                onChanged: (b) => setState(() => isShowStars = b),
+                iconBuilder: (context, local, global) {
+                  return const SizedBox();
+                },
+                defaultCursor: SystemMouseCursors.click,
+                onTap: () {
+                  setState(() => isShowStars = !isShowStars);
+                  if(isShowStars)
+                  {
+                    nowWidgetList = restorantWidgetList.where((element) {
+                      return element.area == areaNames[_selectedArea.index] && element.isStar == true;
+                    }).toList();
+                  }
+                  else{ 
+                    nowWidgetList = restorantWidgetList.where((element) {
+                      return element.area == areaNames[_selectedArea.index] ;
+                    }).toList();
+                  }
+                },
+                iconsTappable: false,
+                wrapperBuilder: (context, global, child) {
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                          left: 10.0,
+                          right: 10.0,
+                          height: 20.0,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Color.lerp(
+                                  Colors.black26,
+                                  highlightColor,
+                                  global.position),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(50.0)),
+                            ),
+                          )),
+                      child,
+                    ],
+                  );
+                },
+                foregroundIndicatorBuilder: (context, global) {
+                  return SizedBox.fromSize(
+                    size: global.indicatorSize,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Color.lerp(
+                            Colors.white, primaryColor, global.position),
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black38,
+                              spreadRadius: 0.05,
+                              blurRadius: 1.1,
+                              offset: Offset(0.0, 0.8))
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+                ],
+              ),
+              
+
+              ],)
             ),
             Flexible(
               flex: 6,
@@ -511,6 +591,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              heroTag: "backBtn",
               backgroundColor: seconderyColor,
               onPressed: () {
                 if (fragment == Fragment.Search) {
@@ -525,6 +606,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              heroTag: "menuBtn",
               backgroundColor: primaryColor,
               onPressed: () {
                 Navigator.of(context).push(
