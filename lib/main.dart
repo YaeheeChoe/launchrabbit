@@ -295,7 +295,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? highlightColor
                               : seconderyColor,
                           onPressed: () {
-                            updateArea(Area.Sinjeongmun);
+                            if(isShowStars){
+                              updateStarredArea(Area.Sinjeongmun);
+                            }
+                            else{
+                              updateArea(Area.Sinjeongmun);
+                            }
                           },
                         ),
                         AreaButton(
@@ -305,7 +310,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? highlightColor
                               : seconderyColor,
                           onPressed: () {
-                            updateArea(Area.Gujeongmun);
+                            if(isShowStars){
+                              updateStarredArea(Area.Gujeongmun);
+                            }
+                            else{
+                              updateArea(Area.Gujeongmun);
+                            }
                           },
                         ),
                         AreaButton(
@@ -315,7 +325,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? highlightColor
                               : seconderyColor,
                           onPressed: () {
-                            updateArea(Area.Sadaebugo);
+                            if(isShowStars){
+                              updateStarredArea(Area.Sadaebugo);
+                            }
+                            else{
+                              updateArea(Area.Sadaebugo);
+                            }
                           },
                         ),
                       ],
