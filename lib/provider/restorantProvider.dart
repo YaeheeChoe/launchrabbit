@@ -225,6 +225,17 @@ class Restorant with ChangeNotifier {
     });
     return _starredList;
   }
+  List<RestorantWidget> getFavoriteList(){
+    Map<int,RestorantWidget> _restorantMap = restorantList.asMap();
+    List<RestorantWidget> _starredList = [];
+    _restorantMap.forEach((i, e) {
+      if(_isStar[i])
+      {
+        _starredList.add(e);
+      };
+    });
+    return _starredList;
+  }
   List<RestorantWidget> getList(Area area){
     return restorantList.where((e) => e.area == _areaNames[area.index]).toList();
   }
