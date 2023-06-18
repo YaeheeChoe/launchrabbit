@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 //jh
 enum Fragment {
   Home,
@@ -56,6 +57,7 @@ TextStyle secondaryTextStyle = TextStyle(
 
 class _MyHomePageState extends State<MyHomePage> {
   Fragment fragment = Fragment.Home;
+
   void toggleSearchResult(str) {
     setState(() {
       setState(() {
@@ -331,6 +333,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
+
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
@@ -426,7 +429,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderSide: BorderSide.none, // 외곽선 없음
                   ),
 
-                  filled: true, // 배경색 s적용
+                  filled: true,
+                  // 배경색 s적용
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
               ),
