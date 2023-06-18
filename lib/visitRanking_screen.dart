@@ -33,70 +33,68 @@ List<RestorantRankingWidget> restorantRankingWidgetList = [
     area: '구정문',
     visitNum: 30,
     restorantImagePath: 'assets/images/Sinjeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '먹짜',
     area: '사대부고',
     visitNum: 20,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_2.png',
   ),
   RestorantRankingWidget(
     name: '도꾸이',
     area: '신정문',
     visitNum: 10,
     restorantImagePath: 'assets/images/Gujeongmun.png',
-    rankingImagePath: 'assets/images/rank_3.png',
   ),
   RestorantRankingWidget(
     name: '코츠모',
     area: '사대부고',
     visitNum: 9,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '피스비',
     area: '구정문',
     visitNum: 8,
     restorantImagePath: 'assets/images/Sinjeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '하랑',
     area: '사대부고',
     visitNum: 7,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '꽁꼬르드',
     area: '사대부고',
     visitNum: 6,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '주인테이블',
     area: '구정문',
     visitNum: 5,
     restorantImagePath: 'assets/images/Sinjeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '콩샌',
     area: '신정문',
     visitNum: 4,
     restorantImagePath: 'assets/images/Gujeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '야미',
     area: '신정문',
     visitNum: 3,
     restorantImagePath: 'assets/images/Gujeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
 ];
 
@@ -106,70 +104,68 @@ List<RestorantRankingWidget> nowRankingWidgetList = [
     area: '구정문',
     visitNum: 30,
     restorantImagePath: 'assets/images/Sinjeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '먹짜',
     area: '사대부고',
     visitNum: 20,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_2.png',
   ),
   RestorantRankingWidget(
     name: '도꾸이',
     area: '신정문',
     visitNum: 10,
     restorantImagePath: 'assets/images/Gujeongmun.png',
-    rankingImagePath: 'assets/images/rank_3.png',
   ),
   RestorantRankingWidget(
     name: '코츠모',
     area: '사대부고',
     visitNum: 9,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '피스비',
     area: '구정문',
     visitNum: 8,
     restorantImagePath: 'assets/images/Sinjeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '하랑',
     area: '사대부고',
     visitNum: 7,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '꽁꼬르드',
     area: '사대부고',
     visitNum: 6,
     restorantImagePath:'assets/images/Sadaebugo.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '주인테이블',
     area: '구정문',
     visitNum: 5,
     restorantImagePath: 'assets/images/Sinjeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '콩샌',
     area: '신정문',
     visitNum: 4,
     restorantImagePath: 'assets/images/Gujeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
   RestorantRankingWidget(
     name: '야미',
     area: '신정문',
     visitNum: 3,
     restorantImagePath: 'assets/images/Gujeongmun.png',
-    rankingImagePath: 'assets/images/rank_1.png',
+    
   ),
 ];
 
@@ -195,7 +191,6 @@ Area _selectedArea = Area.All;
         nowRankingWidgetList = restorantRankingWidgetList;
       }
       nowRankingWidgetList.sort((a, b) => b.visitNum.compareTo(a.visitNum));
-      // nowRankingWidgetList[1].rankingImagePath = 'assets/images/rank_1.png';
 
   });
 }

@@ -5,7 +5,6 @@ import '../colors.dart';
 class RestorantRankingWidget extends StatefulWidget {
   final String name;
   final String restorantImagePath;
-  final String rankingImagePath;
   final int visitNum;
   final String area;
 
@@ -15,7 +14,6 @@ class RestorantRankingWidget extends StatefulWidget {
     required this.visitNum,
     required this.area,
     required this.restorantImagePath,
-    required this.rankingImagePath,
   }) : super(key: key);
 
   @override
@@ -62,10 +60,7 @@ class _RestorantRankingWidgetState extends State<RestorantRankingWidget> {
 
             Container(
               child: Row(children:[
-                Image.asset(widget.rankingImagePath,
-                  width: 50,
-                  height: 50,
-                ),
+                
                 Padding(padding: EdgeInsets.only(left: 30)),
                 Image.asset(widget.restorantImagePath,
                   width: 40,

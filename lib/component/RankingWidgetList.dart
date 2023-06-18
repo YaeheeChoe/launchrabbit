@@ -15,7 +15,36 @@ class RankingWidgetList extends StatelessWidget {
       scrollDirection: Axis.vertical,
       physics: NeverScrollableScrollPhysics(), 
       itemBuilder: (context, index) {
-        return widgetList[index];
+        return
+        Container(
+          child: Row(
+            children: [
+              (index < 4) ? 
+              (
+                (index ==0 ) ? 
+                  Image.asset('assets/images/rank_1.png',
+                  width: 50,
+                  height: 50,)
+                :
+                  (index ==1) ?
+                    Image.asset('assets/images/rank_2.png',
+                    width: 50,
+                    height: 50)
+                  :
+                  (index ==2) ?
+                    Image.asset('assets/images/rank_3.png',
+                    width: 50,
+                    height: 50)
+                  :
+                    Text('4')
+              )
+              :
+              Text('5')
+              ,
+              widgetList[index]
+            ],
+          ),
+        );
       },
     );
   }
