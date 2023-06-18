@@ -78,31 +78,20 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   List<RestorantWidget> nowWidgetList = [
     RestorantWidget(
-      name: '금암피순대',
-      menu: '피순대 - 순대국밥 - 선지국밥',
-      area: '신정문',
-      km: 0.8,
-      maxSeats: 40,
-      seats: 38,
-      isStar: true,
-    ),
-    RestorantWidget(
-      name: '염가네 뼈해장국',
-      menu: '뼈해장국',
-      area: '신정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
       name: '콩샌',
       menu: '샌드위치',
       area: '신정문',
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
+    ),
+    RestorantWidget(
+      name: '피스비',
+      menu: '파스타',
+      area: '신정문',
+      km: 0.6,
+      maxSeats: 16,
+      seats: 10,
     ),
     RestorantWidget(
       name: '에모이',
@@ -111,39 +100,90 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
+    ),
+    RestorantWidget(
+      name: '금암피순대',
+      menu: '피순대 - 순대국밥 - 선지국밥',
+      area: '신정문',
+      km: 0.8,
+      maxSeats: 40,
+      seats: 38,
+    ),
+    RestorantWidget(
+      name: '봉이 설렁탕',
+      menu: '설렁탕',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+    ),
+    RestorantWidget(
+      name: '염가네 뼈해장국',
+      menu: '뼈해장국',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+    ),
+    RestorantWidget(
+      name: '오타마',
+      menu: '일식',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+    ),
+    RestorantWidget(
+      name: '치히로',
+      menu: '라멘',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+    ),
+    RestorantWidget(
+      name: '야미',
+      menu: '알밥',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
-  List<String> areaNames = ['신정문', '구정문', '사대부고'];
   bool isShowStars = false;
-  void toggleRestorantStar(RestorantWidget wg){
-    var i= context.read<Restorant>().restorantList.indexOf(wg);
-    setState(() {
-      //context.read<Restorant>().restorantList[i].isStar = !context.read<Restorant>().restorantList[i].isStar;
-    });
-  }
+  
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
       
       if (_selectedArea == Area.Sinjeongmun) {
-        nowWidgetList = context.read<Restorant>().restorantList.where((element) {
-          return element.area == areaNames[Area.Sinjeongmun.index]&& (!isShowStars ||element.isStar == true);
-        }).toList();
+        nowWidgetList = context.read<Restorant>().getList(Area.Sinjeongmun);
       } else if (_selectedArea == Area.Gujeongmun) {
-        nowWidgetList = context.read<Restorant>().restorantList.where((element) {
-          return element.area == areaNames[Area.Gujeongmun.index]&& (!isShowStars ||element.isStar == true);
-        }).toList();
+        nowWidgetList = context.read<Restorant>().getList(Area.Gujeongmun);
       } else if (_selectedArea == Area.Sadaebugo) {
-        nowWidgetList = context.read<Restorant>().restorantList.where((element) {
-          return element.area == areaNames[Area.Sadaebugo.index]&& (!isShowStars ||element.isStar == true);
-        }).toList();
+        nowWidgetList = context.read<Restorant>().getList(Area.Sadaebugo);
       }
-       
+
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
     });
   }
+  void updateStarredArea(Area area) {
+    setState(() {
+      _selectedArea = area;
+      
+      if (_selectedArea == Area.Sinjeongmun) {
+        nowWidgetList = context.read<Restorant>().getStarredList(Area.Sinjeongmun);
+      } else if (_selectedArea == Area.Gujeongmun) {
+        nowWidgetList = context.read<Restorant>().getStarredList(Area.Gujeongmun);
+      } else if (_selectedArea == Area.Sadaebugo) {
+        nowWidgetList = context.read<Restorant>().getStarredList(Area.Sadaebugo);
+      }
+
+      nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
+    });
+  }
+
   TextEditingController _tcontroller = TextEditingController();
   String _hintText = '검색';
 
@@ -306,7 +346,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 indicatorSize: Size.square(30.0),
                 animationDuration: const Duration(milliseconds: 200),
                 animationCurve: Curves.linear,
-                onChanged: (b) => setState(() => isShowStars = b),
+                onChanged: (b){
+                  setState(() => {isShowStars = b});
+                  updateArea(_selectedArea);
+                },
                 iconBuilder: (context, local, global) {
                   return const SizedBox();
                 },
@@ -315,14 +358,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   setState(() => isShowStars = !isShowStars);
                   if(isShowStars)
                   {
-                    nowWidgetList = context.read<Restorant>().restorantList.where((element) {
-                      return element.area == areaNames[_selectedArea.index] && element.isStar == true;
-                    }).toList();
+                    updateStarredArea(_selectedArea);
                   }
                   else{ 
-                    nowWidgetList = context.read<Restorant>().restorantList.where((element) {
-                      return element.area == areaNames[_selectedArea.index] ;
-                    }).toList();
+                    updateArea(_selectedArea);
                   }
                 },
                 iconsTappable: false,

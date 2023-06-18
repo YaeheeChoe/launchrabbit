@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../component/RestorantWidget.dart';
+import '../enums.dart';
 
 class Restorant with ChangeNotifier {
   List<RestorantWidget> _restorantList = [
@@ -10,7 +11,6 @@ class Restorant with ChangeNotifier {
       km: 0.8,
       maxSeats: 40,
       seats: 38,
-      isStar: false,
     ),
     RestorantWidget(
       name: '무진장 순두부',
@@ -19,7 +19,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: true,
     ),
     RestorantWidget(
       name: 'TEAM레스토랑',
@@ -28,7 +27,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '봉이 설렁탕',
@@ -37,7 +35,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '우리집불고기',
@@ -46,7 +43,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
     ),
     RestorantWidget(
       name: '모퉁이 덮밥',
@@ -55,7 +51,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
     ),
     RestorantWidget(
       name: '900달러',
@@ -64,7 +59,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
     ),
     RestorantWidget(
       name: '금암피순대',
@@ -73,7 +67,6 @@ class Restorant with ChangeNotifier {
       km: 0.8,
       maxSeats: 40,
       seats: 38,
-      isStar: true,
     ),
     RestorantWidget(
       name: '염가네 뼈해장국',
@@ -82,7 +75,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '덕천식당',
@@ -91,7 +83,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '오타마',
@@ -100,7 +91,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '치히로',
@@ -109,7 +99,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '야미',
@@ -118,7 +107,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '주인테이블',
@@ -127,7 +115,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
       name: '콩샌',
@@ -136,7 +123,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
     ),
     RestorantWidget(
       name: '꽁꼬르드',
@@ -145,7 +131,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
     ),
     RestorantWidget(
       name: '하랑',
@@ -154,7 +139,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
     ),
     RestorantWidget(
       name: '코츠모',
@@ -163,7 +147,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
     ),
     RestorantWidget(
       name: '피스비',
@@ -172,7 +155,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
     ),
     RestorantWidget(
       name: '에모이',
@@ -181,7 +163,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
     ),
     RestorantWidget(
       name: '낙곱새',
@@ -190,7 +171,6 @@ class Restorant with ChangeNotifier {
       km: 0.8,
       maxSeats: 16,
       seats: 15,
-      isStar: false,
     ),
     RestorantWidget(
       name: '신전떡볶이',
@@ -199,7 +179,6 @@ class Restorant with ChangeNotifier {
       km: 1.2,
       maxSeats: 16,
       seats: 15,
-      isStar: false,
     ),
     RestorantWidget(
       name: '찌개랑',
@@ -208,7 +187,6 @@ class Restorant with ChangeNotifier {
       km: 0.6,
       maxSeats: 16,
       seats: 6,
-      isStar: false,
     ),
     RestorantWidget(
       name: '황제보쌈',
@@ -217,10 +195,34 @@ class Restorant with ChangeNotifier {
       km: 0.8,
       maxSeats: 16,
       seats: 11,
-      isStar: false,
     ),
     // ...
   ];
-
   List<RestorantWidget> get restorantList => _restorantList;
+  List<String> _areaNames = ['신정문', '구정문', '사대부고'];
+  List<bool> _isStar = List<bool>.generate(24, (index) => false);
+  void toggleStar(RestorantWidget widget){
+    var index = _restorantList.indexWhere((e) => e.name.compareTo(widget.name) > 0);
+    _isStar[index] = !_isStar[index];
+    notifyListeners();
   }
+  int getStar(RestorantWidget widget){
+    var index = _restorantList.indexWhere((e) => e.name.compareTo(widget.name) > 0);
+    if (index <0) return -1;
+    return _isStar[index] ? 1 : 0;
+  }
+  List<RestorantWidget> getStarredList(Area area){
+    Map<int,RestorantWidget> _restorantMap = getList(area).asMap();
+    List<RestorantWidget> _starredList = [];
+    _restorantMap.forEach((i, e) {
+      if(_isStar[i])
+      {
+        _starredList.add(e);
+      };
+    });
+    return _starredList;
+  }
+  List<RestorantWidget> getList(Area area){
+    return restorantList.where((e) => e.area == _areaNames[area.index]).toList();
+  }
+}

@@ -12,7 +12,6 @@ class StarPage extends StatelessWidget {
       km: 0.8,
       maxSeats: 40,
       seats: 38,
-      isStar: true,
     ),
     RestorantWidget(
       name: '무진장순두부',
@@ -21,7 +20,6 @@ class StarPage extends StatelessWidget {
       km: 1.8,
       maxSeats: 16,
       seats: 8,
-      isStar: true,
     ),
   ];
   @override
