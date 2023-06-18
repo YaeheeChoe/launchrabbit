@@ -136,8 +136,7 @@ class _RestorantWidgetState extends State<RestorantWidget> {
                     },
                     icon: Icon(
                       Icons.location_on,
-                      size: 
- 20,
+                      size: 20,
                         ),
                         color: mainColor,
                       )

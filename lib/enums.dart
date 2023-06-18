@@ -9,4 +9,5 @@ enum Area {
   Sinjeongmun,
   Gujeongmun,
   Sadaebugo,
+  All,
 }
