@@ -5,6 +5,9 @@ import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
 import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'enums.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +27,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//jh
 enum Fragment {
   Home,
   Search,
@@ -37,6 +39,7 @@ enum Area {
   Gujeongmun,
   Sadaebugo,
 }
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -56,15 +59,25 @@ TextStyle secondaryTextStyle = TextStyle(
 
 class _MyHomePageState extends State<MyHomePage> {
   Fragment fragment = Fragment.Home;
+
+  // 문제가 발생하는 이유
+  // 1. 검색한 상태와 검색 안한 상태로 나눴음
+  // 2. 검색을 하면 프레그먼트 스테이먼트가 변하게 해놧음
   void toggleSearchResult(str) {
     setState(() {
       setState(() {
+        // 검색을 했을때
         if (fragment != Fragment.Search) {
           fragment = Fragment.Search;
+          // now위젯리스트가 지금 보이는 위젯리스트인데, 
+          // 레스토랑위젯리스트는 전체 위젯 목록이다
+          // 근데 여기에다 필터를 줘서 검색 기능을 처리했다(element가 필터링)
           nowWidgetList = restorantWidgetList.where((element) {
             return element.name.contains(str) || element.menu.contains(str);
           }).toList();
-        } else {
+        }
+        // 검색을 안했을때 
+        else {
           fragment = Fragment.Home;
           _hintText = '검색';
           updateArea(Area.Sinjeongmun);
@@ -331,26 +344,33 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
+  List<String> areaNames = ['신정문', '구정문', '사대부고'];
+  bool isShowStars = false;
+  void toggleRestorantStar(RestorantWidget wg){
+    var i= restorantWidgetList.indexOf(wg);
+    setState(() {
+      //restorantWidgetList[i].isStar = !restorantWidgetList[i].isStar;
+    });
+  }
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
       if (_selectedArea == Area.Sinjeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '신정문';
+          return element.area == areaNames[Area.Sinjeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Gujeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '구정문';
+          return element.area == areaNames[Area.Gujeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Sadaebugo) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == '사대부고';
+          return element.area == areaNames[Area.Sadaebugo.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       }
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
     });
   }
-
   TextEditingController _tcontroller = TextEditingController();
   String _hintText = '검색';
 
@@ -407,10 +427,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: EdgeInsets.all(16),
+              // 수비할일: 검색화면에서 벗어낫을때 여기를 건드려서 텍스트가 지워지게 해야함.
               child: TextField(
                 controller: _tcontroller,
                 onSubmitted: (str) {
-                  toggleSearchResult(str);
+                  toggleSearchResult(str); // 이게 검색화면으로 전환하는 부분
+
                 },
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
@@ -421,12 +443,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: textGray,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.circular(10.0), // 원하는 radius 값 설정
+                    borderRadius:BorderRadius.circular(10.0), // 원하는 radius 값 설정
                     borderSide: BorderSide.none, // 외곽선 없음
                   ),
 
-                  filled: true, // 배경색 s적용
+                  filled: true, // 배경색 적용
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
               ),
@@ -447,13 +468,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   constraints: BoxConstraints(
                     minHeight: 100, // 최소 높이 설정
                   ),
-                  child: SingleChildScrollView(
+                  // 스크롤 설정하는 기능인데 사이드 설정 옵션을 줫음
+                  child: SingleChildScrollView( 
                     scrollDirection: Axis.horizontal,
+                    // 식당찾기 메인화면에서 상권 버튼 1행 배치
                     child: Row(
+                      // 상권버튼 설정
                       children: [
                         AreaButton(
                           imagePath: 'assets/images/Sinjeongmun.png',
-                          buttonText: '신정문',
+                          buttonText: '구정문',
                           color: _selectedArea == Area.Sinjeongmun
                               ? highlightColor
                               : seconderyColor,
@@ -463,7 +487,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         AreaButton(
                           imagePath: 'assets/images/Gujeongmun.png',
-                          buttonText: '구정문',
+                          buttonText: '신정문',
                           color: _selectedArea == Area.Gujeongmun
                               ? highlightColor
                               : seconderyColor,
@@ -489,16 +513,103 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding:
                   EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
-              child: Text(
+                  
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+               Text(
                 '목록',
                 style: menuTextStyle,
               ),
+              Row(
+                children: [
+                  Text('즐겨찾기',style: secondaryTextStyle,)
+                  ,
+                  CustomAnimatedToggleSwitch<bool>(
+                current: isShowStars,
+                values: [false, true],
+                dif: 0.0,
+                indicatorSize: Size.square(30.0),
+                animationDuration: const Duration(milliseconds: 200),
+                animationCurve: Curves.linear,
+                onChanged: (b) => setState(() => isShowStars = b),
+                iconBuilder: (context, local, global) {
+                  return const SizedBox();
+                },
+                defaultCursor: SystemMouseCursors.click,
+                onTap: () {
+                  setState(() => isShowStars = !isShowStars);
+                  if(isShowStars)
+                  {
+                    nowWidgetList = restorantWidgetList.where((element) {
+                      return element.area == areaNames[_selectedArea.index] && element.isStar == true;
+                    }).toList();
+                  }
+                  else{ 
+                    nowWidgetList = restorantWidgetList.where((element) {
+                      return element.area == areaNames[_selectedArea.index] ;
+                    }).toList();
+                  }
+                },
+                iconsTappable: false,
+                wrapperBuilder: (context, global, child) {
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                          left: 10.0,
+                          right: 10.0,
+                          height: 20.0,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Color.lerp(
+                                  Colors.black26,
+                                  highlightColor,
+                                  global.position),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(50.0)),
+                            ),
+                          )),
+                      child,
+                    ],
+                  );
+                },
+                foregroundIndicatorBuilder: (context, global) {
+                  return SizedBox.fromSize(
+                    size: global.indicatorSize,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Color.lerp(
+                            Colors.white, primaryColor, global.position),
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black38,
+                              spreadRadius: 0.05,
+                              blurRadius: 1.1,
+                              offset: Offset(0.0, 0.8))
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+                ],
+              ),
+              
+
+              ],)
             ),
+            // 검색 필요...
             Flexible(
               flex: 6,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
+                  // 목록 스크롤 되도록 설정
                   child: SingleChildScrollView(
+                    // 위젯리스트가 목록에 보이는 식당 리스트
+                    // 수비할일2: 위젯리스트가 없을때 텍스트가 보이게 처리해야함
                     child: WidgetList(widgetList: nowWidgetList),
                   )),
             ),
@@ -511,6 +622,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              heroTag: "backBtn",
               backgroundColor: seconderyColor,
               onPressed: () {
                 if (fragment == Fragment.Search) {
@@ -525,6 +637,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 32),
             child: FloatingActionButton(
+              heroTag: "menuBtn",
               backgroundColor: primaryColor,
               onPressed: () {
                 Navigator.of(context).push(

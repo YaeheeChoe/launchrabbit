@@ -19,6 +19,7 @@ class MapPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Map'),
       ),
+
       body: Column(children: [
         Flexible(
           child: Container(
