@@ -7,10 +7,14 @@ import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'enums.dart';
+import 'package:provider/provider.dart';
+import './provider/restorantProvider.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<Restorant>(create: (_) => Restorant())
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -59,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // now위젯리스트가 지금 보이는 위젯리스트인데, 
           // 레스토랑위젯리스트는 전체 위젯 목록이다
           // 근데 여기에다 필터를 줘서 검색 기능을 처리했다(element가 필터링)
-          nowWidgetList = restorantWidgetList.where((element) {
+          nowWidgetList = context.read<Restorant>().restorantList.where((element) {
             return element.name.contains(str) || element.menu.contains(str);
           }).toList();
         }
@@ -72,134 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
-
-  List<RestorantWidget> restorantWidgetList = [
-    RestorantWidget(
-      name: '부대통령 뚝배기',
-      menu: '제육볶음 - 부대찌개 - 낚지볶음 - 불고기',
-      area: '사대부고',
-      km: 0.8,
-      maxSeats: 40,
-      seats: 38,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '무진장 순두부',
-      menu: '순두부찌개 - 돈까스 - 청국장',
-      area: '사대부고',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: true,
-    ),
-    RestorantWidget(
-      name: 'TEAM레스토랑',
-      menu: '파스타 - 빠네',
-      area: '구정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '봉이 설렁탕',
-      menu: '설렁탕',
-      area: '신정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '우리집불고기',
-      menu: '불고기 - 카레순두부',
-      area: '사대부고',
-      km: 0.6,
-      maxSeats: 10,
-      seats: 8,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '모퉁이 덮밥',
-      menu: '모퉁이 덮밥 - 제육덮밥 - 스테이크 덮밥',
-      area: '사대부고',
-      km: 0.6,
-      maxSeats: 16,
-      seats: 10,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '900달러',
-      menu: '피자',
-      area: '구정문',
-      km: 0.6,
-      maxSeats: 16,
-      seats: 10,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '금암피순대',
-      menu: '피순대 - 순대국밥 - 선지국밥',
-      area: '신정문',
-      km: 0.8,
-      maxSeats: 40,
-      seats: 38,
-      isStar: true,
-    ),
-    RestorantWidget(
-      name: '염가네 뼈해장국',
-      menu: '뼈해장국',
-      area: '신정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '덕천식당',
-      menu: '뼈해장국',
-      area: '구정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '오타마',
-      menu: '일식',
-      area: '신정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '치히로',
-      menu: '라멘',
-      area: '신정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '야미',
-      menu: '알밥',
-      area: '신정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '주인테이블',
-      menu: '전골',
-      area: '구정문',
-      km: 1.2,
-      maxSeats: 20,
-      seats: 3,
-      isStar: false,
-    ),
+  List<RestorantWidget> nowWidgetList = [
     RestorantWidget(
       name: '콩샌',
       menu: '샌드위치',
@@ -207,34 +84,6 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.6,
       maxSeats: 10,
       seats: 8,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '꽁꼬르드',
-      menu: '파스타 - 리조또',
-      area: '사대부고',
-      km: 0.6,
-      maxSeats: 10,
-      seats: 8,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '하랑',
-      menu: '연어 - 이자카야',
-      area: '사대부고',
-      km: 0.6,
-      maxSeats: 10,
-      seats: 8,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '코츠모',
-      menu: '오코노미야끼',
-      area: '사대부고',
-      km: 0.6,
-      maxSeats: 10,
-      seats: 8,
-      isStar: false,
     ),
     RestorantWidget(
       name: '피스비',
@@ -243,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
     ),
     RestorantWidget(
       name: '에모이',
@@ -252,47 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.6,
       maxSeats: 16,
       seats: 10,
-      isStar: false,
     ),
-    RestorantWidget(
-      name: '낙곱새',
-      menu: '낙지 - 곱창 - 새우',
-      area: '구정문',
-      km: 0.8,
-      maxSeats: 16,
-      seats: 15,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '신전떡볶이',
-      menu: '신전떡볶이 - 치즈떡볶이 - 주먹밥',
-      area: '구정문',
-      km: 1.2,
-      maxSeats: 16,
-      seats: 15,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '찌개랑',
-      menu: '된장찌개 - 부대찌개',
-      area: '구정문',
-      km: 0.6,
-      maxSeats: 16,
-      seats: 6,
-      isStar: false,
-    ),
-    RestorantWidget(
-      name: '황제보쌈',
-      menu: '보쌈정식',
-      area: '구정문',
-      km: 0.8,
-      maxSeats: 16,
-      seats: 11,
-      isStar: false,
-    ),
-    // ...
-  ];
-  List<RestorantWidget> nowWidgetList = [
     RestorantWidget(
       name: '금암피순대',
       menu: '피순대 - 순대국밥 - 선지국밥',
@@ -300,7 +108,14 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 0.8,
       maxSeats: 40,
       seats: 38,
-      isStar: true,
+    ),
+    RestorantWidget(
+      name: '봉이 설렁탕',
+      menu: '설렁탕',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
     ),
     RestorantWidget(
       name: '염가네 뼈해장국',
@@ -309,55 +124,66 @@ class _MyHomePageState extends State<MyHomePage> {
       km: 1.2,
       maxSeats: 20,
       seats: 3,
-      isStar: false,
     ),
     RestorantWidget(
-      name: '콩샌',
-      menu: '샌드위치',
+      name: '오타마',
+      menu: '일식',
       area: '신정문',
-      km: 0.6,
-      maxSeats: 10,
-      seats: 8,
-      isStar: false,
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
     ),
     RestorantWidget(
-      name: '에모이',
-      menu: '쌀국수',
+      name: '치히로',
+      menu: '라멘',
       area: '신정문',
-      km: 0.6,
-      maxSeats: 16,
-      seats: 10,
-      isStar: false,
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
+    ),
+    RestorantWidget(
+      name: '야미',
+      menu: '알밥',
+      area: '신정문',
+      km: 1.2,
+      maxSeats: 20,
+      seats: 3,
     ),
   ];
   Area _selectedArea = Area.Sinjeongmun;
-  List<String> areaNames = ['신정문', '구정문', '사대부고'];
   bool isShowStars = false;
-  void toggleRestorantStar(RestorantWidget wg){
-    var i= restorantWidgetList.indexOf(wg);
-    setState(() {
-      //restorantWidgetList[i].isStar = !restorantWidgetList[i].isStar;
-    });
-  }
+  
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
+      
       if (_selectedArea == Area.Sinjeongmun) {
-        nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Sinjeongmun.index]&& (!isShowStars ||element.isStar == true);
-        }).toList();
+        nowWidgetList = context.read<Restorant>().getList(Area.Sinjeongmun);
       } else if (_selectedArea == Area.Gujeongmun) {
-        nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Gujeongmun.index]&& (!isShowStars ||element.isStar == true);
-        }).toList();
+        nowWidgetList = context.read<Restorant>().getList(Area.Gujeongmun);
       } else if (_selectedArea == Area.Sadaebugo) {
-        nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Sadaebugo.index]&& (!isShowStars ||element.isStar == true);
-        }).toList();
+        nowWidgetList = context.read<Restorant>().getList(Area.Sadaebugo);
       }
+
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
     });
   }
+  void updateStarredArea(Area area) {
+    setState(() {
+      _selectedArea = area;
+      
+      if (_selectedArea == Area.Sinjeongmun) {
+        nowWidgetList = context.read<Restorant>().getStarredList(Area.Sinjeongmun);
+      } else if (_selectedArea == Area.Gujeongmun) {
+        nowWidgetList = context.read<Restorant>().getStarredList(Area.Gujeongmun);
+      } else if (_selectedArea == Area.Sadaebugo) {
+        nowWidgetList = context.read<Restorant>().getStarredList(Area.Sadaebugo);
+      }
+
+      nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
+    });
+  }
+
   TextEditingController _tcontroller = TextEditingController();
   String _hintText = '검색';
 
@@ -469,7 +295,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? highlightColor
                               : seconderyColor,
                           onPressed: () {
-                            updateArea(Area.Sinjeongmun);
+                            if(isShowStars){
+                              updateStarredArea(Area.Sinjeongmun);
+                            }
+                            else{
+                              updateArea(Area.Sinjeongmun);
+                            }
                           },
                         ),
                         AreaButton(
@@ -479,7 +310,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? highlightColor
                               : seconderyColor,
                           onPressed: () {
-                            updateArea(Area.Gujeongmun);
+                            if(isShowStars){
+                              updateStarredArea(Area.Gujeongmun);
+                            }
+                            else{
+                              updateArea(Area.Gujeongmun);
+                            }
                           },
                         ),
                         AreaButton(
@@ -489,7 +325,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? highlightColor
                               : seconderyColor,
                           onPressed: () {
-                            updateArea(Area.Sadaebugo);
+                            if(isShowStars){
+                              updateStarredArea(Area.Sadaebugo);
+                            }
+                            else{
+                              updateArea(Area.Sadaebugo);
+                            }
                           },
                         ),
                       ],
@@ -520,7 +361,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 indicatorSize: Size.square(30.0),
                 animationDuration: const Duration(milliseconds: 200),
                 animationCurve: Curves.linear,
-                onChanged: (b) => setState(() => isShowStars = b),
+                onChanged: (b){
+                  setState(() => {isShowStars = b});
+                  updateArea(_selectedArea);
+                },
                 iconBuilder: (context, local, global) {
                   return const SizedBox();
                 },
@@ -529,14 +373,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   setState(() => isShowStars = !isShowStars);
                   if(isShowStars)
                   {
-                    nowWidgetList = restorantWidgetList.where((element) {
-                      return element.area == areaNames[_selectedArea.index] && element.isStar == true;
-                    }).toList();
+                    updateStarredArea(_selectedArea);
                   }
                   else{ 
-                    nowWidgetList = restorantWidgetList.where((element) {
-                      return element.area == areaNames[_selectedArea.index] ;
-                    }).toList();
+                    updateArea(_selectedArea);
                   }
                 },
                 iconsTappable: false,
