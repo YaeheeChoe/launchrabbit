@@ -10,7 +10,6 @@ import 'enums.dart';
 import 'package:launchrabbit/colors.dart';
 import 'package:launchrabbit/component/AreaButton.dart';
 import 'package:launchrabbit/component/ExpandableFab.dart';
-import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:launchrabbit/component/RestorantWidget.dart';
 import 'package:launchrabbit/component/RestorantRankingWidget.dart';
 import 'package:launchrabbit/component/RankingWidgetList.dart';

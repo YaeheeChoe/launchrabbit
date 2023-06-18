@@ -5,7 +5,6 @@ import 'package:launchrabbit/component/ExpandableFab.dart';
 import 'package:launchrabbit/component/WidgetList.dart';
 import 'package:launchrabbit/mypage_screen.dart';
 import './component/RestorantWidget.dart';
-import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'enums.dart';
 import 'package:provider/provider.dart';
 import './provider/restorantProvider.dart';
