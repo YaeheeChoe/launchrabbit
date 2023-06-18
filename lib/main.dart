@@ -67,11 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
             return element.name.contains(str) || element.menu.contains(str);
           }).toList();
         }
-        // 검색을 안했을때 
+
+        // 검색을 안했을때
         else {
-          fragment = Fragment.Home;
+          fragment = Fragment.Home; // 홈으로 이동
           _hintText = '검색';
           updateArea(Area.Sinjeongmun);
+
+          _tcontroller.clear(); // 검색창 내용을 지움
         }
       });
     });
@@ -185,6 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   TextEditingController _tcontroller = TextEditingController();
+
   String _hintText = '검색';
 
   @override
@@ -240,12 +244,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: EdgeInsets.all(16),
-              // 수비할일: 검색화면에서 벗어낫을때 여기를 건드려서 텍스트가 지워지게 해야함.
-              child: TextField(
-                controller: _tcontroller,
-                onSubmitted: (str) {
+              // 수비 할 일: 검색 화면에서 벗어낫을때 여기를 건드려서 텍스트가 지워지게 해야함.
+              child: TextField( // 검색창 
+                controller: _tcontroller, // 텍스트 필드 내용 여기 저장
+                onSubmitted: (str) { // str을 입력받으면 이게 검색 부분에 들어감
                   toggleSearchResult(str); // 이게 검색화면으로 전환하는 부분
-
                 },
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
@@ -429,15 +432,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ],)
             ),
             // 검색 필요...
+
+            // 위젯리스트가 목록에 보이는 식당 리스트
+            // 수비할일2: 위젯리스트가 없을때 텍스트가 보이게 처리해야함
             Flexible(
               flex: 6,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  // 목록 스크롤 되도록 설정
                   child: SingleChildScrollView(
-                    // 위젯리스트가 목록에 보이는 식당 리스트
-                    // 수비할일2: 위젯리스트가 없을때 텍스트가 보이게 처리해야함
-                    child: WidgetList(widgetList: nowWidgetList),
+                    child: nowWidgetList.isEmpty
+                    ? Text('식당이 없습니다.')
+                    : WidgetList(widgetList: nowWidgetList),
                   )),
             ),
           ],
@@ -448,11 +453,10 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Container(
             padding: EdgeInsets.only(left: 32),
-            child: FloatingActionButton(
-              heroTag: "backBtn",
+            child: FloatingActionButton( // 뒤로가기 버튼 
               backgroundColor: seconderyColor,
               onPressed: () {
-                if (fragment == Fragment.Search) {
+                if (fragment == Fragment.Search) { // 검색 화면인 경우
                   toggleSearchResult('');
                 } else {
                   Navigator.of(context).pop(true);
