@@ -57,7 +57,7 @@ class RankingWidgetList extends StatelessWidget {
               Container(
                     width: 48,
                     padding: EdgeInsets.only(left: 14),
-                    child:Text((index+1).toString(), style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                    child:Text((index+1).toString(), style: TextStyle(fontSize: 20),
                   ))         ,
                   Image.asset(widgetList[index].restorantImagePath,
                   width: 40,
