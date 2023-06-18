@@ -2,27 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:launchrabbit/MapPage.dart';
 import '../colors.dart';
 
-class RestorantRankingWidget extends StatefulWidget {
+class RestorantHistoryWidget extends StatefulWidget {
   final String name;
   final String restorantImagePath;
-  final String rankingImagePath;
-  final int visitNum;
+  final String visitDate;
   final String area;
 
-  const RestorantRankingWidget({
+  const RestorantHistoryWidget({
     Key? key,
     required this.name,
-    required this.visitNum,
+    required this.visitDate,
     required this.area,
     required this.restorantImagePath,
-    required this.rankingImagePath,
   }) : super(key: key);
 
   @override
-  _RestorantRankingWidgetState createState() => _RestorantRankingWidgetState();
+  _RestorantHistoryWidgetState createState() => _RestorantHistoryWidgetState();
 }
 
-class _RestorantRankingWidgetState extends State<RestorantRankingWidget> {
+class _RestorantHistoryWidgetState extends State<RestorantHistoryWidget> {
   Color statusColor = primaryColor;
   Color mainColor = primaryColor;
   bool star = false; // Initialized with a default value
@@ -35,7 +33,7 @@ class _RestorantRankingWidgetState extends State<RestorantRankingWidget> {
     TextStyle nameStyle = TextStyle(
       fontSize: 20,
     );
-    TextStyle visitNumStyle = TextStyle(
+    TextStyle visitDateStyle = TextStyle(
       fontSize: 20,
     );
 
@@ -59,30 +57,23 @@ class _RestorantRankingWidgetState extends State<RestorantRankingWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // 방문 날짜
+              Text(
+                widget.visitDate,
+                style: visitDateStyle,
+              ),
 
-            Container(
-              child: Row(children:[
-                Image.asset(widget.rankingImagePath,
-                  width: 50,
-                  height: 50,
-                ),
-                Padding(padding: EdgeInsets.only(left: 30)),
-                Image.asset(widget.restorantImagePath,
-                  width: 40,
-                  height: 40,
-                ),
-              ]),
-            ), 
-            Text(
-                  widget.name,
-                  style: nameStyle,
-                ),
-
-            Text(
-                  "방문: " + widget.visitNum.toString(),
-                  style: visitNumStyle,
-                ),
+              // 식당 이름
+              Text(
+                widget.name,
+                style: nameStyle,
+              ),
               
+              // 상권별 이미지
+              Image.asset(widget.restorantImagePath,
+                width: 50,
+                height: 50,
+              ),
             ],
           ),            
         ),

@@ -461,7 +461,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         AreaButton(
                           imagePath: 'assets/images/Sinjeongmun.png',
-                          buttonText: '신정문',
+                          buttonText: '구정문',
                           color: _selectedArea == Area.Sinjeongmun
                               ? highlightColor
                               : seconderyColor,
@@ -471,7 +471,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         AreaButton(
                           imagePath: 'assets/images/Gujeongmun.png',
-                          buttonText: '구정문',
+                          buttonText: '신정문',
                           color: _selectedArea == Area.Gujeongmun
                               ? highlightColor
                               : seconderyColor,
