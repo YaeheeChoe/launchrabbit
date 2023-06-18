@@ -57,7 +57,12 @@ class RestorantWidget extends StatelessWidget {
           fontWeight: FontWeight.w600,
         );
             return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapPage()),
+                );
+          },
           child: Container(
             padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
             decoration: BoxDecoration(
