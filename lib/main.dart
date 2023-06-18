@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
           fragment = Fragment.Home; // 홈으로 이동
           _hintText = '검색';
           updateArea(Area.Sinjeongmun);
-
+          isShowStars = false;
           _tcontroller.clear(); // 검색창 내용을 지움
         }
       });
@@ -353,83 +353,84 @@ class _MyHomePageState extends State<MyHomePage> {
                 '목록',
                 style: menuTextStyle,
               ),
-              Row(
-                children: [
-                  Text('즐겨찾기',style: secondaryTextStyle,)
-                  ,
-                  CustomAnimatedToggleSwitch<bool>(
-                current: isShowStars,
-                values: [false, true],
-                dif: 0.0,
-                indicatorSize: Size.square(30.0),
-                animationDuration: const Duration(milliseconds: 200),
-                animationCurve: Curves.linear,
-                onChanged: (b){
-                  setState(() => {isShowStars = b});
-                  updateArea(_selectedArea);
-                },
-                iconBuilder: (context, local, global) {
-                  return const SizedBox();
-                },
-                defaultCursor: SystemMouseCursors.click,
-                onTap: () {
-                  setState(() => isShowStars = !isShowStars);
-                  if(isShowStars)
-                  {
-                    updateStarredArea(_selectedArea);
-                  }
-                  else{ 
+              if(fragment != Fragment.Search)
+                Row(
+                  children: [
+                    Text('즐겨찾기',style: secondaryTextStyle,)
+                    ,
+                    CustomAnimatedToggleSwitch<bool>(
+                  current: isShowStars,
+                  values: [false, true],
+                  dif: 0.0,
+                  indicatorSize: Size.square(30.0),
+                  animationDuration: const Duration(milliseconds: 200),
+                  animationCurve: Curves.linear,
+                  onChanged: (b){
+                    setState(() => {isShowStars = b});
                     updateArea(_selectedArea);
-                  }
-                },
-                iconsTappable: false,
-                wrapperBuilder: (context, global, child) {
-                  return Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Positioned(
-                          left: 10.0,
-                          right: 10.0,
-                          height: 20.0,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: Color.lerp(
-                                  Colors.black26,
-                                  highlightColor,
-                                  global.position),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(50.0)),
-                            ),
-                          )),
-                      child,
-                    ],
-                  );
-                },
-                foregroundIndicatorBuilder: (context, global) {
-                  return SizedBox.fromSize(
-                    size: global.indicatorSize,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Color.lerp(
-                            Colors.white, primaryColor, global.position),
-                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.black38,
-                              spreadRadius: 0.05,
-                              blurRadius: 1.1,
-                              offset: Offset(0.0, 0.8))
-                        ],
+                  },
+                  iconBuilder: (context, local, global) {
+                    return const SizedBox();
+                  },
+                  defaultCursor: SystemMouseCursors.click,
+                  onTap: () {
+                    setState(() => isShowStars = !isShowStars);
+                    if(isShowStars)
+                    {
+                      updateStarredArea(_selectedArea);
+                    }
+                    else{ 
+                      updateArea(_selectedArea);
+                    }
+                  },
+                  iconsTappable: false,
+                  wrapperBuilder: (context, global, child) {
+                    return Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Positioned(
+                            left: 10.0,
+                            right: 10.0,
+                            height: 20.0,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Color.lerp(
+                                    Colors.black26,
+                                    highlightColor,
+                                    global.position),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(50.0)),
+                              ),
+                            )),
+                        child,
+                      ],
+                    );
+                  },
+                  foregroundIndicatorBuilder: (context, global) {
+                    return SizedBox.fromSize(
+                      size: global.indicatorSize,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Color.lerp(
+                              Colors.white, primaryColor, global.position),
+                          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.black38,
+                                spreadRadius: 0.05,
+                                blurRadius: 1.1,
+                                offset: Offset(0.0, 0.8))
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ),
-                ],
-              ),
+                    );
+                  },
+                ),
+                  ],
+                ),
               
 
-              ],)
+              ],),
             ),
             // 검색 필요...
 
