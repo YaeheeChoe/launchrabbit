@@ -31,7 +31,7 @@ class RestorantWidget extends StatelessWidget {
 
         Color statusColor = primaryColor;
         Color mainColor = primaryColor;
-        bool star = provider.getStar(this)>0 ? true : false;
+        bool star = provider.getStar(this);
         if (maxSeats - seats > 8) {
           statusColor = safeColor;
         } else if (maxSeats - seats > 4) {

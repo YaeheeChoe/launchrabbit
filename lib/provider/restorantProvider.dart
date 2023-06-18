@@ -202,22 +202,25 @@ class Restorant with ChangeNotifier {
   List<String> _areaNames = ['신정문', '구정문', '사대부고'];
   List<bool> _isStar = List<bool>.generate(24, (index) => false);
   void toggleStar(RestorantWidget widget){
-    var index = _restorantList.indexWhere((e) => e.name.compareTo(widget.name) > 0);
+    var index = _restorantList.indexWhere((e) => e.name.compareTo(widget.name) == 0);
     _isStar[index] = !_isStar[index];
     notifyListeners();
   }
-  int getStar(RestorantWidget widget){
-    var index = _restorantList.indexWhere((e) => e.name.compareTo(widget.name) > 0);
-    if (index <0) return -1;
-    return _isStar[index] ? 1 : 0;
+  bool getStar(RestorantWidget widget){
+    var index = _restorantList.indexWhere((e) => e.name.compareTo(widget.name) == 0);
+    if (index == -1) return false;
+    return _isStar[index];
   }
   List<RestorantWidget> getStarredList(Area area){
-    Map<int,RestorantWidget> _restorantMap = getList(area).asMap();
+    Map<int,RestorantWidget> _restorantMap = restorantList.asMap();
     List<RestorantWidget> _starredList = [];
     _restorantMap.forEach((i, e) {
       if(_isStar[i])
       {
-        _starredList.add(e);
+        if(e.area == _areaNames[area.index])
+        {
+          _starredList.add(e);
+        }
       };
     });
     return _starredList;
