@@ -442,7 +442,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child: SingleChildScrollView(
                     child: nowWidgetList.isEmpty
-                    ? Text('식당이 없습니다.')
+                    ? Container(
+                      alignment: Alignment.center,
+                      height: 400,
+                      child: 
+                    Text('검색된 식당이 없습니다.',style:menuTextStyle)
+                    ,)
                     : WidgetList(widgetList: nowWidgetList),
                   )),
             ),
