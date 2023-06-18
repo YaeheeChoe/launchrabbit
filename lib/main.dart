@@ -332,28 +332,32 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   Area _selectedArea = Area.Sinjeongmun;
   List<String> areaNames = ['신정문', '구정문', '사대부고'];
-  bool isShowStars = true;
+  bool isShowStars = false;
+  void toggleRestorantStar(RestorantWidget wg){
+    var i= restorantWidgetList.indexOf(wg);
+    setState(() {
+      //restorantWidgetList[i].isStar = !restorantWidgetList[i].isStar;
+    });
+  }
   void updateArea(Area area) {
     setState(() {
       _selectedArea = area;
-      isShowStars = false;
       if (_selectedArea == Area.Sinjeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Sinjeongmun.index];
+          return element.area == areaNames[Area.Sinjeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Gujeongmun) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Gujeongmun.index];
+          return element.area == areaNames[Area.Gujeongmun.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       } else if (_selectedArea == Area.Sadaebugo) {
         nowWidgetList = restorantWidgetList.where((element) {
-          return element.area == areaNames[Area.Sadaebugo.index];
+          return element.area == areaNames[Area.Sadaebugo.index]&& (!isShowStars ||element.isStar == true);
         }).toList();
       }
       nowWidgetList.sort((a, b) => a.km.compareTo(b.km));
     });
   }
-
   TextEditingController _tcontroller = TextEditingController();
   String _hintText = '검색';
 
@@ -426,12 +430,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: textGray,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.circular(10.0), // 원하는 radius 값 설정
+                    borderRadius:BorderRadius.circular(10.0), // 원하는 radius 값 설정
                     borderSide: BorderSide.none, // 외곽선 없음
                   ),
 
-                  filled: true, // 배경색 s적용
+                  filled: true, // 배경색 적용
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
               ),
@@ -530,7 +533,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       return element.area == areaNames[_selectedArea.index] && element.isStar == true;
                     }).toList();
                   }
-                  else{
+                  else{ 
                     nowWidgetList = restorantWidgetList.where((element) {
                       return element.area == areaNames[_selectedArea.index] ;
                     }).toList();
