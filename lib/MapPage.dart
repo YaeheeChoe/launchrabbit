@@ -21,6 +21,8 @@ class MapPage extends StatelessWidget {
       ),
       body: GestureDetector(
         onTap: () {
+          // 영태형 할일 : 모달창 대신 고정된 형태로 수정 (양념 반 후라이드 반)
+          // 이게 식당정보 튀어나는 창 (기본이 하이드 모드)
           showModalBottomSheet(
             context: context,
             backgroundColor: Colors.transparent,
@@ -34,6 +36,9 @@ class MapPage extends StatelessWidget {
                     topRight: Radius.circular(20), // 모달 우상단 라운딩 처리
                   ),
                 ), // 모달 창의 배경색 설정
+                
+                // 식당 상세페이지 안에 있는 모든 정보들
+                // 구조는 바꿀 필요없음
                 child: Center(
                   child: Column(
                     children: [
