@@ -1,13 +1,8 @@
 body, html {
   margin:0;
   height:100%;
-<<<<<<< HEAD
-  background: #000000;
   background-image: url("img/light-background.png");
-=======
-  background: #ffffff;
-  
->>>>>>> origin/yoo
+  background: #fdcfb0;
   background-size: 100% 100%;
 }
 
@@ -41,13 +36,8 @@ body, html {
   body {
     margin:0;
     height:100%;
-<<<<<<< HEAD
-    background: #000000;
     background-image: url("img/dark-background.png");
-=======
-    background: #ffffff;
-    
->>>>>>> origin/yoo
+    background: #fdcfb0;
     background-size: 100% 100%;
   }
 }
