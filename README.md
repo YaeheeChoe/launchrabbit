@@ -1,16 +1,7 @@
 # launchrabbit
+전북대 식당찾기 앱
 
-A new Flutter project.
+![홈 - 사대부고](https://github.com/YaeheeChoe/launchrabbit/assets/72256237/41c7b406-aec5-40b8-b476-bd97ef9e5c58)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[데모영상](https://www.youtube.com/shorts/z03IFmI6XA4)
